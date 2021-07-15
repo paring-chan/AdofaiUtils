@@ -45,7 +45,10 @@ const args = yargs(process.argv)
 
 const dev = !args.release
 
-build('AdofaiUtils2.Core', dev)
+build('AdofaiUtils2.Core', dev, [{
+    file: 'UnityProject/Assets/AssetBundle/AssetBundle',
+    root: true
+}])
 
 if (dev) {
     try {
