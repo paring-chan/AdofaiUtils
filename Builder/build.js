@@ -4,23 +4,26 @@ const yargs = require('yargs-parser')
 const rimraf = require('rimraf')
 const archiver = require('archiver')
 const path = require('path')
-const { findSteamAppById } = require('find-steam-app');
+const {findSteamAppById} = require('find-steam-app')
+const builderConfig = require('../builderconfig.json')
 
+
+const out = path.join(__dirname, '../out')
 const release = path.join(__dirname, '../Release')
 
-if (!fs.existsSync(release)) fs.mkdirSync(release)
+if (!fs.existsSync(out)) fs.mkdirSync(out)
 
 function build(mod, dev, extra = []) {
-    const outPath = path.join(release, mod)
+    const outPath = path.join(out, mod)
     const proj = path.join(__dirname, '..', mod)
-    const devPath = path.join('C:\\Program Files (x86)\\Steam\\steamapps\\common\\A Dance of Fire and Ice\\Mods', mod)
+    const devPath = path.join(builderConfig.modsPath, mod)
 
     const copyDist = (filename, root) => fs.copyFileSync(path.join(...root ? [proj] : [proj, 'bin/Release'], filename), path.join(devPath, filename.split('/').pop()))
     const copy = (filename, root) => {
         fs.copyFileSync(path.join(...root ? [proj] : [proj, 'bin/Release'], filename), path.join(outPath, filename.split('/').pop()))
         if (dev) copyDist(filename, root)
     }
-    
+
     const info = require(path.join(proj, 'Info.json'))
     rimraf.sync(outPath)
     fs.mkdirSync(outPath)
@@ -29,15 +32,24 @@ function build(mod, dev, extra = []) {
         rimraf.sync(devPath)
         fs.mkdirSync(devPath)
     }
-    
+
     cp.execSync('"C:\\Program Files\\JetBrains\\JetBrains Rider 2021.1.3\\tools\\MSBuild\\Current\\Bin\\MSBuild.exe" /p:Configuration=Release', {
         cwd: proj
     })
-    
+
     copy(mod + '.dll')
     copy('Info.json', true)
     for (const ex of extra) {
         copy(ex.file, ex.root || false)
+    }
+
+    if (!dev) {
+        if (!fs.existsSync(release)) fs.mkdirSync(release)
+        const zip = archiver('zip', {})
+        const stream = fs.createWriteStream(path.join(release, `${info.Id}-${info.Version}.zip`))
+        zip.pipe(stream)
+        zip.directory(outPath, info.Id)
+        zip.finalize()
     }
 }
 
@@ -45,15 +57,16 @@ const args = yargs(process.argv)
 
 const dev = !args.release
 
-build('AdofaiUtils2.Core', dev, [{
-    file: 'UnityProject/Assets/AssetBundles/adofaiutils2.core.assets',
-    root: true
-}])
+for (const i of builderConfig.outputs) {
+    console.log('Building: ' + i.mod)
+    build(i.mod, dev, i.extraFiles)
+}
 
-if (dev) {
+if (builderConfig.launchAdofai && dev) {
     try {
         cp.execSync('explorer steam://rungameid/977950')
-    } catch {}
+    } catch {
+    }
 }
 
 

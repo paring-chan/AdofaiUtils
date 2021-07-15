@@ -373,3 +373,5 @@ FodyWeavers.xsd
 test-results/
 
 .idea
+Release
+out

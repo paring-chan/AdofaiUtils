@@ -1,0 +1,15 @@
+{
+  "modsPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\A Dance of Fire and Ice\\Mods",
+  "outputs": [
+    {
+      "mod": "AdofaiUtils2.Core",
+      "extraFiles": [
+        {
+          "file": "UnityProject/Assets/AssetBundles/adofaiutils2.core.assets",
+          "root": true
+        }
+      ]
+    }
+  ],
+  "launchAdofai": true
+}
