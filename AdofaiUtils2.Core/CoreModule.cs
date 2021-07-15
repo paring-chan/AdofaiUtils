@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityModManagerNet;
 
-namespace AdofaiUtils.Core
+namespace AdofaiUtils2.Core
 {
     internal static class CoreModule
     {

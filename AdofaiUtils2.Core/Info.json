@@ -1,0 +1,9 @@
+{
+  "Id": "AdofaiUtils2.Core",
+  "DisplayName": "AdofaiUtils Core Module",
+  "Author": "PIKOKR",
+  "Version": "0.0.1",
+  "AssemblyName": "AdofaiUtils2.Core.dll",
+  "EntryMethod": "AdofaiUtils2.Core.CoreModule.Load",
+  "Repository": "https://raw.githubusercontent.com/pikokr/AdofaiUtils2/master/Repository.json"
+}

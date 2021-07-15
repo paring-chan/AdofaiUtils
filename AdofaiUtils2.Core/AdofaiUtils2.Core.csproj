@@ -7,8 +7,8 @@
         <ProjectGuid>{2E3EB5F4-8744-4E4C-BA1C-9630108DD474}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>AdofaiUtils.Core</RootNamespace>
-        <AssemblyName>AdofaiUtils.Core</AssemblyName>
+        <RootNamespace>AdofaiUtils2.Core</RootNamespace>
+        <AssemblyName>AdofaiUtils2.Core</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -377,6 +377,9 @@
       <Reference Include="XTUtilities, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
         <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\A Dance of Fire and Ice\A Dance of Fire and Ice_Data\Managed\XTUtilities.dll</HintPath>
       </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Info.json" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
