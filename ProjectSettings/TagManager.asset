@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Beat
+  - Bar
+  - X
+  - NewgroundsAPI
+  - MovingFloor
+  - MissIndicator
+  - EventIndicator
+  - IgnoreClick
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Planet
+  - Floor
+  - BG
+  - BG Static
+  - Camera
+  - Flash
+  - TopGlow
+  - FloorTemp
+  - Review
+  - WorkshopThumbnail
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Bg3
+    uniqueID: 1281023201
+    locked: 0
+  - name: Bg2(Lights)
+    uniqueID: 1456742089
+    locked: 0
+  - name: Bg
+    uniqueID: 1320933907
+    locked: 0
+  - name: Floor
+    uniqueID: 2973111929
+    locked: 0
+  - name: Ring
+    uniqueID: 2236660977
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: FgFlash
+    uniqueID: 353734097
+    locked: 0
