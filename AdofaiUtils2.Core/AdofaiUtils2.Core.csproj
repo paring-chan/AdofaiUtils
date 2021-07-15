@@ -32,7 +32,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Include="Assets.cs" />
       <Compile Include="CoreModule.cs" />
+      <Compile Include="Settings\SettingsModule.cs" />
     </ItemGroup>
     <ItemGroup>
       <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null">
@@ -377,9 +379,6 @@
       <Reference Include="XTUtilities, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
         <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\A Dance of Fire and Ice\A Dance of Fire and Ice_Data\Managed\XTUtilities.dll</HintPath>
       </Reference>
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="Info.json" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

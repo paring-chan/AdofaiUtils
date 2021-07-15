@@ -15,9 +15,9 @@ function build(mod, dev, extra = []) {
     const proj = path.join(__dirname, '..', mod)
     const devPath = path.join('C:\\Program Files (x86)\\Steam\\steamapps\\common\\A Dance of Fire and Ice\\Mods', mod)
 
-    const copyDist = (filename, root) => fs.copyFileSync(path.join(...root ? [proj] : [proj, 'bin/Release'], filename), path.join(devPath, filename))
+    const copyDist = (filename, root) => fs.copyFileSync(path.join(...root ? [proj] : [proj, 'bin/Release'], filename), path.join(devPath, filename.split('/').pop()))
     const copy = (filename, root) => {
-        fs.copyFileSync(path.join(...root ? [proj] : [proj, 'bin/Release'], filename), path.join(outPath, filename))
+        fs.copyFileSync(path.join(...root ? [proj] : [proj, 'bin/Release'], filename), path.join(outPath, filename.split('/').pop()))
         if (dev) copyDist(filename, root)
     }
     
@@ -46,7 +46,7 @@ const args = yargs(process.argv)
 const dev = !args.release
 
 build('AdofaiUtils2.Core', dev, [{
-    file: 'UnityProject/Assets/AssetBundle/AssetBundle',
+    file: 'UnityProject/Assets/AssetBundles/adofaiutils2.core.assets',
     root: true
 }])
 

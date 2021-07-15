@@ -1,19 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1407585722
+CRC: 530620942
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ba2951ad10170ed7237db06e2dedd084
+    Hash: 6f705f1ab6bb1249e1d90c021cdc21e2
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 74915f6b2cd18355a39c6d261137df53
+    Hash: 2a5028bf885bf8e429ce954f1df7239b
 HashAppended: 0
 ClassTypes:
 - Class: 1
-  Script: {instanceID: 0}
-- Class: 4
-  Script: {instanceID: 0}
-- Class: 20
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
@@ -21,19 +17,22 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 81
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 115
   Script: {instanceID: 0}
-- Class: 89
+- Class: 128
   Script: {instanceID: 0}
-- Class: 104
+- Class: 222
   Script: {instanceID: 0}
-- Class: 108
+- Class: 223
   Script: {instanceID: 0}
-- Class: 157
+- Class: 224
   Script: {instanceID: 0}
-- Class: 196
-  Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Scenes/SampleScene.unity
+- Assets/Prefab/SettingsUI.prefab
 Dependencies: []
