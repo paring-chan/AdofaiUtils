@@ -63,6 +63,7 @@ for (const i of builderConfig.outputs) {
 }
 
 if (builderConfig.launchAdofai && dev) {
+    console.log('Launching ADOFAI....')
     try {
         cp.execSync('explorer steam://rungameid/977950')
     } catch {
