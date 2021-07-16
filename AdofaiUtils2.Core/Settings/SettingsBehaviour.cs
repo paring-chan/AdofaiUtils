@@ -5,11 +5,11 @@ namespace AdofaiUtils2.Core.Settings
 {
     public class SettingsBehaviour : MonoBehaviour
     {
-        public static GUIStyle Window;
-        
         private void OnGUI()
         {
-            GUILayout.BeginArea(new Rect(200, 200, Screen.width - 400, Screen.height - 400), "와 샌즈", Window);
+            GUI.skin = Assets.GUISkin;
+            GUILayout.BeginArea(new Rect(50, 50, Screen.width - 100, Screen.height - 100), "와 샌즈", GUI.skin.window);
+            GUILayout.Button("와아");
             GUILayout.EndArea();
         }
     }

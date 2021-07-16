@@ -16,7 +16,6 @@ namespace AdofaiUtils2.Core.Settings
         {
             Instance = this;
             GameObject = new GameObject();
-            GameObject.AddComponent<Canvas>();
             GameObject.AddComponent<SettingsBehaviour>();
             Object.DontDestroyOnLoad(GameObject);
         }
