@@ -462,7 +462,7 @@ MonoBehaviour:
     m_Padding:
       m_Left: 10
       m_Right: 10
-      m_Top: 55
+      m_Top: 40
       m_Bottom: 10
     m_Overflow:
       m_Left: 0
@@ -477,7 +477,7 @@ MonoBehaviour:
     m_RichText: 1
     m_TextClipping: 1
     m_ImagePosition: 0
-    m_ContentOffset: {x: 5, y: -45}
+    m_ContentOffset: {x: 5, y: -30}
     m_FixedWidth: 0
     m_FixedHeight: 0
     m_StretchWidth: 1
