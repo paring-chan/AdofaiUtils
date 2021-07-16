@@ -34,7 +34,7 @@
     <ItemGroup>
       <Compile Include="Assets.cs" />
       <Compile Include="CoreModule.cs" />
-      <Compile Include="Settings\SettingsBehaviour.cs" />
+      <Compile Include="Settings\SettingsUI.cs" />
       <Compile Include="Settings\SettingsModule.cs" />
     </ItemGroup>
     <ItemGroup>
