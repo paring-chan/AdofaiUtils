@@ -34,6 +34,7 @@
     <ItemGroup>
       <Compile Include="Assets.cs" />
       <Compile Include="Attribute\PatchCondition.cs" />
+      <Compile Include="Attribute\PatchTag.cs" />
       <Compile Include="CoreModule.cs" />
       <Compile Include="Settings\SettingsUI.cs" />
       <Compile Include="Settings\SettingsModule.cs" />
