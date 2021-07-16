@@ -1,38 +1,22 @@
 ManifestFileVersion: 0
-CRC: 530620942
+CRC: 369639893
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6f705f1ab6bb1249e1d90c021cdc21e2
+    Hash: 0b31f9b5f37a7ff1134d9b975493ff64
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2a5028bf885bf8e429ce954f1df7239b
+    Hash: 44912aa95bf28c03affddc6817be15fe
 HashAppended: 0
 ClassTypes:
-- Class: 1
-  Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
 - Class: 28
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-- Class: 115
-  Script: {instanceID: 0}
 - Class: 128
   Script: {instanceID: 0}
-- Class: 222
-  Script: {instanceID: 0}
-- Class: 223
-  Script: {instanceID: 0}
-- Class: 224
-  Script: {instanceID: 0}
 Assets:
-- Assets/Prefab/SettingsUI.prefab
+- Assets/Fonts/NotoSansKR-Regular.otf
 Dependencies: []

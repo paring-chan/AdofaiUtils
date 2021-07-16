@@ -10,12 +10,14 @@ namespace AdofaiUtils2.Core.Settings
             private set;
         }
         
-        public GameObject GameObject;
+        private GameObject GameObject;
 
         public SettingsModule()
         {
             Instance = this;
-            GameObject = Object.Instantiate(Assets.SettingsUI);
+            GameObject = new GameObject();
+            GameObject.AddComponent<Canvas>();
+            GameObject.AddComponent<SettingsBehaviour>();
             Object.DontDestroyOnLoad(GameObject);
         }
     }
