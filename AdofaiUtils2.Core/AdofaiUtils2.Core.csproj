@@ -33,9 +33,11 @@
     </PropertyGroup>
     <ItemGroup>
       <Compile Include="Assets.cs" />
+      <Compile Include="Attribute\PatchCondition.cs" />
       <Compile Include="CoreModule.cs" />
       <Compile Include="Settings\SettingsUI.cs" />
       <Compile Include="Settings\SettingsModule.cs" />
+      <Compile Include="Util\ConditionalPatch.cs" />
     </ItemGroup>
     <ItemGroup>
       <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null">
