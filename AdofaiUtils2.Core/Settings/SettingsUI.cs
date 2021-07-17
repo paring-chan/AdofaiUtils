@@ -5,7 +5,7 @@ namespace AdofaiUtils2.Core.Settings
 {
     public class SettingsUI : MonoBehaviour
     {
-        public static bool Open = true;
+        public static bool Open;
         public static bool Escape;
 
         private void Update()
