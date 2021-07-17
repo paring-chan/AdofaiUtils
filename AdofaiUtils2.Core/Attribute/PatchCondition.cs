@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
+using JetBrains.Annotations;
 
 namespace AdofaiUtils2.Core.Attribute
 {
@@ -11,7 +12,8 @@ namespace AdofaiUtils2.Core.Attribute
         private static Dictionary<string, bool> _enables = new Dictionary<string, bool>();
         public string ClassName { get; set; }
         public string Id { get; set; }
-        public string Method { get; set; }
+        
+        public string MethodName => info.methodName;
         
         public Assembly Assembly { get; set; }
 
@@ -27,12 +29,13 @@ namespace AdofaiUtils2.Core.Attribute
             set => _enables[Id] = value;
         }
         
-        public PatchCondition(string id, string className, string method, int minVersion = -1, int maxVersion = -1, Assembly asm = null)
+        public PatchCondition(string id, string className, string method, int minVersion = -1, int maxVersion = -1)
         {
             Id = id;
             ClassName = className;
-            Assembly = asm == null ? Assembly.GetAssembly(typeof(ADOBase)) : asm;
-            Method = method;
+            Assembly = Assembly.GetAssembly(typeof(ADOBase));
+            info.methodName = method;
+            info.declaringType = Assembly.GetType(className);
             MinVersion = minVersion;
             MaxVersion = maxVersion;
         }

@@ -2,8 +2,8 @@ using System;
 
 namespace AdofaiUtils2.Core.Attribute
 {
-    [AttributeUsage(AttributeTargets.Class)]
-    public class PatchTag
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+    public class PatchTag : System.Attribute
     {
         public string Name { get; set; }
 

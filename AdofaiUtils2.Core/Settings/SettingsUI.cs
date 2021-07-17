@@ -6,6 +6,19 @@ namespace AdofaiUtils2.Core.Settings
     public class SettingsUI : MonoBehaviour
     {
         public static bool Open = true;
+        public static bool Escape;
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Comma) && !Open)
+            {
+                Open = true;
+            } else if (Input.GetKeyDown(KeyCode.Escape) && Open)
+            {
+                Escape = true;
+                Open = false;
+            }
+        }
 
         private void OnGUI()
         {
