@@ -8,6 +8,7 @@ namespace AdofaiUtils2.Core.Settings
         public static bool Open;
         public static bool Escape;
         private Vector2 tabScrollPosition;
+        private string current;
 
         private void Update()
         {
@@ -31,65 +32,25 @@ namespace AdofaiUtils2.Core.Settings
             tabScrollPosition = GUILayout.BeginScrollView(tabScrollPosition, GUILayout.MaxHeight(55.0f));
             GUILayout.BeginHorizontal();
 
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("와!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-            GUILayout.Button("샌즈!");
-
+            foreach (var v in SettingsManager.SettingsMap)
+            {
+                var settings = v.Value;
+                if (GUILayout.Button(settings.TabName))
+                {
+                    current = settings.Id;
+                }
+            }
 
             GUILayout.EndHorizontal();
             GUILayout.EndScrollView();
-            GUILayout.Button("와 샌즈");
+            if (!SettingsManager.SettingsMap.TryGetValue(current ?? "AdofaiUtils2.Core.CoreSettings", out var guiSettings))
+            {
+                GUILayout.Label("설정을 선택해주세요.");
+            }
+            else
+            {
+                guiSettings.GUI();
+            }
             GUILayout.EndArea();
         }
     }
