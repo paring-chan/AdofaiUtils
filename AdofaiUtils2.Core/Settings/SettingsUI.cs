@@ -34,7 +34,7 @@ namespace AdofaiUtils2.Core.Settings
                 foreach (var v in SettingsManager.SettingsMap)
                 {
                     var settings = v.Value;
-                    items.Add(settings.Id);
+                    items.Add(settings.TabName);
                 }
 
                 return items.ToArray();
@@ -78,7 +78,7 @@ namespace AdofaiUtils2.Core.Settings
 
             var guiSettings = current;
 
-            GUILayout.BeginArea(new Rect(50, 90, Screen.width - 100, Screen.height - 120),
+            GUILayout.BeginArea(new Rect(50, 50, Screen.width - 100, Screen.height - 100),
                 guiSettings == null ? "AdofaiUtils2 설정" : guiSettings.TabName,
                 GUI.skin.window);
             _tabIndex = GUILayout.Toolbar(_tabIndex, Items);

@@ -28,7 +28,10 @@ namespace AdofaiUtils2.Core.Settings
 
         public override void GUI()
         {
-            UnityModManager.UI.DrawKeybinding(ref settingsKey);
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Settings Key(설정 키)");
+            UnityModManager.UI.DrawKeybinding(ref settingsKey, "Settings Key");
+            GUILayout.EndHorizontal();
         }
     }
 }
