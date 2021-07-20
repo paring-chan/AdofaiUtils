@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 using UnityEngine;
 
 namespace AdofaiUtils2.Core.Settings
@@ -6,6 +9,31 @@ namespace AdofaiUtils2.Core.Settings
     public static class SettingsManager
     {
         public static readonly Dictionary<string, SettingsBase> SettingsMap = new Dictionary<string, SettingsBase>();
+
+        public static T Load<T>() where T : SettingsBase, new()
+        {
+            var t = new T();
+            var path = t.FilePath;
+            if (File.Exists(path))
+            {
+                try
+                {
+                    using (var stream = File.OpenRead(path))
+                    {
+                        var serializer = new XmlSerializer(typeof(T));
+                        var result = (T)serializer.Deserialize(stream);
+                        return result;
+                    }
+                }
+                catch (Exception e)
+                {
+                    CoreModule.ModEntry.Logger.Error($"Loading settings from {path} failed.");
+                    CoreModule.ModEntry.Logger.LogException(e);
+                }
+            }
+
+            return t;
+        }
         
         public static void Register(SettingsBase settings)
         {

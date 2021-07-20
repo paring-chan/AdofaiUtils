@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3446938327
+CRC: 369639893
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fa461b2ea1ab869df845866359f1a208
+    Hash: 0b31f9b5f37a7ff1134d9b975493ff64
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2ab493987e7f21c78aa4f0707a3219ad
+    Hash: 44912aa95bf28c03affddc6817be15fe
 HashAppended: 0
 ClassTypes:
 - Class: 21
@@ -15,13 +15,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
-- Class: 115
-  Script: {instanceID: 0}
 - Class: 128
   Script: {instanceID: 0}
 Assets:
-- Assets/GUISkins/DefaultSkin.guiskin
 - Assets/Fonts/NotoSansKR-Regular.otf
 Dependencies: []

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AdofaiUtils2.Core.Settings
@@ -8,11 +9,52 @@ namespace AdofaiUtils2.Core.Settings
         public static bool Open;
         public static bool Escape;
         private Vector2 tabScrollPosition;
-        private string current;
+        private int _tabIndex;
+
+        private string[] Keys
+        {
+            get
+            {
+                var keys = new List<string>();
+                foreach (var v in SettingsManager.SettingsMap)
+                {
+                    var settings = v.Value;
+                    keys.Add(settings.Id);
+                }
+
+                return keys.ToArray();
+            }
+        }
+
+        private string[] Items
+        {
+            get
+            {
+                var items = new List<string>();
+                foreach (var v in SettingsManager.SettingsMap)
+                {
+                    var settings = v.Value;
+                    items.Add(settings.Id);
+                }
+
+                return items.ToArray();
+            }
+        }
+
+
+        private SettingsBase current
+        {
+            get
+            {
+                SettingsManager.SettingsMap.TryGetValue(Keys[_tabIndex] ?? "AdofaiUtils2.Core.CoreSettings",
+                    out var guiSettings);
+                return guiSettings;
+            }
+        }
 
         private void Update()
         {
-            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Comma) && !Open)
+            if (SettingsModule.Instance.Settings.settingsKey.Down() && !Open)
             {
                 Open = true;
             }
@@ -20,6 +62,11 @@ namespace AdofaiUtils2.Core.Settings
             {
                 Escape = true;
                 Open = false;
+                var guiSettings = current;
+                if (guiSettings != null)
+                {
+                    guiSettings.Save();
+                }
             }
         }
 
@@ -27,23 +74,16 @@ namespace AdofaiUtils2.Core.Settings
         {
             if (!Open) return;
             GUI.skin = Assets.GUISkin;
-            GUILayout.BeginArea(new Rect(50, 50, Screen.width - 100, Screen.height - 100), "AdofaiUtils2 설정", GUI.skin.window);
 
-            tabScrollPosition = GUILayout.BeginScrollView(tabScrollPosition, GUILayout.MaxHeight(55.0f));
-            GUILayout.BeginHorizontal();
 
-            foreach (var v in SettingsManager.SettingsMap)
-            {
-                var settings = v.Value;
-                if (GUILayout.Button(settings.TabName))
-                {
-                    current = settings.Id;
-                }
-            }
+            var guiSettings = current;
 
-            GUILayout.EndHorizontal();
-            GUILayout.EndScrollView();
-            if (!SettingsManager.SettingsMap.TryGetValue(current ?? "AdofaiUtils2.Core.CoreSettings", out var guiSettings))
+            GUILayout.BeginArea(new Rect(50, 90, Screen.width - 100, Screen.height - 120),
+                guiSettings == null ? "AdofaiUtils2 설정" : guiSettings.TabName,
+                GUI.skin.window);
+            _tabIndex = GUILayout.Toolbar(_tabIndex, Items);
+
+            if (guiSettings == null)
             {
                 GUILayout.Label("설정을 선택해주세요.");
             }
@@ -51,6 +91,7 @@ namespace AdofaiUtils2.Core.Settings
             {
                 guiSettings.GUI();
             }
+
             GUILayout.EndArea();
         }
     }

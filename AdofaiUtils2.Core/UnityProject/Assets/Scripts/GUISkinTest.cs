@@ -6,6 +6,8 @@ public class GUISkinTest : MonoBehaviour
     public GUISkin skin;
 
     private Vector2 _pos = new Vector2(0, 0);
+
+    private bool _check;
     
     private void OnGUI()
     {
@@ -33,6 +35,8 @@ public class GUISkinTest : MonoBehaviour
         GUILayout.Button("와아아");
         GUILayout.Button("와아아");
         GUILayout.Button("와아아");
+
+        _check = GUILayout.Toggle(_check, "체크");
         
         GUILayout.EndScrollView();
         

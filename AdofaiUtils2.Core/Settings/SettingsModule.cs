@@ -7,6 +7,8 @@ namespace AdofaiUtils2.Core.Settings
     {
         public static SettingsModule Instance { get; private set; }
 
+        public CoreSettings Settings;
+
         private GameObject GameObject;
 
         private CoreSettings _settings;
@@ -21,15 +23,15 @@ namespace AdofaiUtils2.Core.Settings
             GameObject = new GameObject();
             GameObject.AddComponent<SettingsUI>();
             Object.DontDestroyOnLoad(GameObject);
-            _settings = new CoreSettings();
-            SettingsManager.Register(_settings);
+            Settings = SettingsManager.Load<CoreSettings>();
+            SettingsManager.Register(Settings);
         }
 
         public void Destroy()
         {
             Object.Destroy(GameObject);
             GameObject = null;
-            SettingsManager.Unregister(_settings);
+            SettingsManager.Unregister(Settings);
         }
     }
 }
