@@ -1,5 +1,6 @@
 using System.Reflection;
 using AdofaiUtils2.Core;
+using AdofaiUtils2.Core.Settings;
 using AdofaiUtils2.Core.Util;
 using HarmonyLib;
 using UnityModManagerNet;
@@ -9,6 +10,7 @@ namespace AdofaiUtils2.Misc
     public class MiscModule
     {
         internal static UnityModManager.ModEntry ModEntry;
+        internal static MiscSettings Settings;
 
         public static Harmony Harmony
         {
@@ -26,6 +28,7 @@ namespace AdofaiUtils2.Misc
         private static bool OnToggle(UnityModManager.ModEntry modEntry, bool value)
         {
             ModEntry = modEntry;
+            Settings = SettingsManager.Load<MiscSettings>();
             if (value)
             {
                 StartTweaks();
@@ -39,12 +42,12 @@ namespace AdofaiUtils2.Misc
 
         private static void StartTweaks()
         {
-            Harmony.PatchConditionalAll(Assembly.GetExecutingAssembly());
+            SettingsManager.Register(Settings);
         }
 
         private static void StopTweaks()
         {
-            Harmony.UnpatchConditionalAll(Assembly.GetExecutingAssembly());
+            SettingsManager.Unregister(Settings);
         }
     }
 }
