@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AdofaiUtils2.Core.Settings
 {
-    public class SettingsModule
+    internal class SettingsModule
     {
         public static SettingsModule Instance { get; private set; }
 

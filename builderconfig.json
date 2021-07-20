@@ -9,6 +9,10 @@
           "root": true
         }
       ]
+    },
+    {
+      "mod": "AdofaiUtils2.Misc",
+      "extraFiles": []
     }
   ],
   "launchAdofai": true,

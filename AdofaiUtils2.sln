@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdofaiUtils2.Core", "AdofaiUtils2.Core\AdofaiUtils2.Core.csproj", "{2E3EB5F4-8744-4E4C-BA1C-9630108DD474}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdofaiUtils2.Misc", "AdofaiUtils2.Misc\AdofaiUtils2.Misc.csproj", "{8A8E42DB-9390-4BD8-A1C8-9924DC2999EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{2E3EB5F4-8744-4E4C-BA1C-9630108DD474}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E3EB5F4-8744-4E4C-BA1C-9630108DD474}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E3EB5F4-8744-4E4C-BA1C-9630108DD474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A8E42DB-9390-4BD8-A1C8-9924DC2999EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A8E42DB-9390-4BD8-A1C8-9924DC2999EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A8E42DB-9390-4BD8-A1C8-9924DC2999EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A8E42DB-9390-4BD8-A1C8-9924DC2999EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

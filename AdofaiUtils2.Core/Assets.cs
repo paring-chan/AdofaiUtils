@@ -4,7 +4,7 @@ using UnityModManagerNet;
 
 namespace AdofaiUtils2.Core
 {
-    public static class Assets
+    internal static class Assets
     {
         public static AssetBundle Bundle { get; private set; }
         
