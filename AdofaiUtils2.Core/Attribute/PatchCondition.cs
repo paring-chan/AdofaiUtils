@@ -36,6 +36,7 @@ namespace AdofaiUtils2.Core.Attribute
             Assembly = Assembly.GetAssembly(typeof(ADOBase));
             info.methodName = method;
             info.declaringType = Assembly.GetType(className);
+            info.method = info.declaringType.GetMethod(method, AccessTools.all);
             MinVersion = minVersion;
             MaxVersion = maxVersion;
         }

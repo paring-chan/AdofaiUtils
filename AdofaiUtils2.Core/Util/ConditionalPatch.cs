@@ -130,12 +130,7 @@ namespace AdofaiUtils2.Core.Util
         
         public static void PatchConditionalTag(this Harmony harmony, Assembly asm, string tag)
         {
-            var types = GetTypesContainingAttribute<PatchCondition>(asm).FindAll(type =>
-            {
-                var tagAttr = type.GetCustomAttribute<PatchTag>();
-                if (tagAttr == null) return false;
-                return tagAttr.Name == tag;
-            });
+            var types = FilterTag<PatchCondition>(asm,tag);
             foreach (var type in types)
             {
                 harmony.PatchConditional(type);
@@ -144,12 +139,8 @@ namespace AdofaiUtils2.Core.Util
         
         public static void UnpatchConditionalTag(this Harmony harmony, Assembly asm, string tag)
         {
-            var types = GetTypesContainingAttribute<PatchCondition>(asm).FindAll(type =>
-            {
-                var tagAttr = type.GetCustomAttribute<PatchTag>();
-                if (tagAttr == null) return false;
-                return tagAttr.Name == tag;
-            });
+            var types = FilterTag<PatchCondition>(asm,tag);
+
             foreach (var type in types)
             {
                 harmony.UnpatchConditional(type);

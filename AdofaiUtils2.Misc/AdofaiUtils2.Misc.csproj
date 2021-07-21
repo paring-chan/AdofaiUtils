@@ -38,6 +38,7 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
+      <Compile Include="CustomKeyBinding\Patches.cs" />
       <Compile Include="MiscModule.cs" />
       <Compile Include="MiscSettings.cs" />
     </ItemGroup>

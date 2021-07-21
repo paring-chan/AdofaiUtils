@@ -4,7 +4,6 @@ using System.Xml.Serialization;
 using AdofaiUtils2.Core.Settings;
 using AdofaiUtils2.Core.Util;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityModManagerNet;
 
 namespace AdofaiUtils2.Misc
@@ -23,7 +22,11 @@ namespace AdofaiUtils2.Misc
         public bool keyBindEnabled;
 
         public bool instantJoinKeyActive;
-        public KeyBinding instantJoinKey;
+        public KeyBinding instantJoinKey = new KeyBinding
+        {
+            keyCode = KeyCode.LeftArrow
+        };
+        [XmlIgnore]
         public bool instantJoinKeyCollapse;
 
         private void KeyMapUI(ref KeyBinding key, ref bool active, ref bool collapse, string title)

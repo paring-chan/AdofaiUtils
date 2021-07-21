@@ -5,7 +5,7 @@ using UnityModManagerNet;
 namespace AdofaiUtils2.Core.Settings
 {
     [Serializable]
-    internal class CoreSettings : SettingsBase
+    public class CoreSettings : SettingsBase
     {
         public CoreSettings()
         {
