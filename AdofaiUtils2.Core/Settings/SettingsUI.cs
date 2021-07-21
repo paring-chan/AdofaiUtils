@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AdofaiUtils2.Core.Settings
 {
-    public class SettingsUI : MonoBehaviour
+    internal class SettingsUI : MonoBehaviour
     {
         public static bool Open;
         public static bool Escape;
@@ -89,7 +89,7 @@ namespace AdofaiUtils2.Core.Settings
             }
             else
             {
-                guiSettings.GUI();
+                guiSettings.OnGUI();
             }
 
             GUILayout.EndArea();

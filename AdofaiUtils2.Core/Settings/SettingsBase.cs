@@ -28,11 +28,7 @@ namespace AdofaiUtils2.Core.Settings
         [XmlIgnore]
         public string Id;
 
-        public static void Load()
-        {
-        }
-
-        public abstract void GUI();
+        public abstract void OnGUI();
         
         public abstract void Save();
     }

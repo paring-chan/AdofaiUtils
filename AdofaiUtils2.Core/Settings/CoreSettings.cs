@@ -26,7 +26,7 @@ namespace AdofaiUtils2.Core.Settings
             SaveSettings(this);
         }
 
-        public override void GUI()
+        public override void OnGUI()
         {
             GUILayout.BeginHorizontal();
             GUILayout.Label("Settings Key(설정 키)");

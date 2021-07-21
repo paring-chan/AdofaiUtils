@@ -37,6 +37,7 @@
       <Compile Include="Attribute\PatchTag.cs" />
       <Compile Include="CoreModule.cs" />
       <Compile Include="Settings\CoreSettings.cs" />
+      <Compile Include="Settings\GUIExtended.cs" />
       <Compile Include="Settings\SettingsBase.cs" />
       <Compile Include="Settings\Patch.cs" />
       <Compile Include="Settings\SettingsManager.cs" />
