@@ -6,29 +6,31 @@ using JetBrains.Annotations;
 
 namespace AdofaiUtils2.Core.Attribute
 {
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class PatchCondition : HarmonyPatch
     {
         private static Dictionary<string, bool> _enables = new Dictionary<string, bool>();
         public string ClassName { get; set; }
         public string Id { get; set; }
-        
+
         public string MethodName => info.methodName;
-        
+
         public Assembly Assembly { get; set; }
 
         public int MinVersion { get; set; }
-        
+
         public int MaxVersion { get; set; }
-        
-        public bool IsEnabled {
-            get {
+
+        public bool IsEnabled
+        {
+            get
+            {
                 if (!_enables.ContainsKey(Id)) _enables[Id] = false;
                 return _enables[Id];
             }
             set => _enables[Id] = value;
         }
-        
+
         public PatchCondition(string id, string className, string method, int minVersion = -1, int maxVersion = -1)
         {
             Id = id;

@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using System.Xml.Serialization;
 using AdofaiUtils2.Core.Settings;
 using AdofaiUtils2.Core.Util;
 using UnityEngine;
@@ -54,6 +53,13 @@ namespace AdofaiUtils2.Misc
                     keyCode = KeyCode.I
                 };
                 public bool infoKeyCollapse;
+                
+                public bool editorKeyActive = true;
+                public KeyBinding editorKey = new KeyBinding
+                {
+                    keyCode = KeyCode.E
+                };
+                public bool editorKeyCollapse;
             }
 
             public CLSSettings CLS = new CLSSettings();
@@ -107,6 +113,7 @@ namespace AdofaiUtils2.Misc
                 KeyMapUI(ref KeyBinding.CLS.workshopKey, ref KeyBinding.CLS.workshopKeyActive, ref KeyBinding.CLS.workshopKeyCollapse, "스팀 창작마당 열기");
                 KeyMapUI(ref KeyBinding.CLS.reloadKey, ref KeyBinding.CLS.reloadKeyActive, ref KeyBinding.CLS.reloadKeyCollapse, "CLS 새로고침");
                 KeyMapUI(ref KeyBinding.CLS.infoKey, ref KeyBinding.CLS.infoKeyActive, ref KeyBinding.CLS.infoKeyCollapse, "맵 정보 보기");
+                KeyMapUI(ref KeyBinding.CLS.editorKey, ref KeyBinding.CLS.editorKeyActive, ref KeyBinding.CLS.editorKeyCollapse, "CLS에서 맵 에디터 바로 입장");
             }, () =>
             {
                 if (KeyBinding.Enabled)
