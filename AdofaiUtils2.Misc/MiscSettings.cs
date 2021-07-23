@@ -47,6 +47,13 @@ namespace AdofaiUtils2.Misc
                     keyCode = KeyCode.R
                 };
                 public bool reloadKeyCollapse;
+                
+                public bool infoKeyActive = true;
+                public KeyBinding infoKey = new KeyBinding
+                {
+                    keyCode = KeyCode.I
+                };
+                public bool infoKeyCollapse;
             }
 
             public CLSSettings CLS = new CLSSettings();
@@ -99,6 +106,7 @@ namespace AdofaiUtils2.Misc
                 KeyMapUI(ref KeyBinding.CLS.instantJoinKey, ref KeyBinding.CLS.instantJoinKeyActive, ref KeyBinding.CLS.instantJoinKeyCollapse, "cls에서 맵 바로 입장");
                 KeyMapUI(ref KeyBinding.CLS.workshopKey, ref KeyBinding.CLS.workshopKeyActive, ref KeyBinding.CLS.workshopKeyCollapse, "스팀 창작마당 열기");
                 KeyMapUI(ref KeyBinding.CLS.reloadKey, ref KeyBinding.CLS.reloadKeyActive, ref KeyBinding.CLS.reloadKeyCollapse, "CLS 새로고침");
+                KeyMapUI(ref KeyBinding.CLS.infoKey, ref KeyBinding.CLS.infoKeyActive, ref KeyBinding.CLS.infoKeyCollapse, "맵 정보 보기");
             }, () =>
             {
                 if (KeyBinding.Enabled)

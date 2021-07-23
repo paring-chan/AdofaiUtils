@@ -3,7 +3,9 @@ using AdofaiUtils2.Core;
 using AdofaiUtils2.Core.Settings;
 using AdofaiUtils2.Core.Util;
 using HarmonyLib;
+using UnityEngine;
 using UnityModManagerNet;
+using Patches = AdofaiUtils2.Misc.CustomKeyBinding.Patches;
 
 namespace AdofaiUtils2.Misc
 {

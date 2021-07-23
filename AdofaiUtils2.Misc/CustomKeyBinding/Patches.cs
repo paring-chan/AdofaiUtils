@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using ADOFAI;
 using AdofaiUtils2.Core.Attribute;
+using UnityEngine;
 using UnityModManagerNet;
 
 namespace AdofaiUtils2.Misc.CustomKeyBinding
@@ -36,12 +38,21 @@ namespace AdofaiUtils2.Misc.CustomKeyBinding
 
         [PatchTag("AdofaiUtils2.Misc.KeyBinding")]
         [PatchCondition("AdofaiUtils2.Misc.KeyBinding.scnCLSUpdate", "scnCLS", "Update")]
-        private static class ScnCLSUpdate
+        internal static class ScnCLSUpdate
         {
+            private static GameObject _infoObject;
+
+            private static LevelInfoBehaviour _levelInfo;
+
             public static void Postfix(scnCLS __instance,
                 bool ___searchMode, string ___levelToSelect,
-                Dictionary<string, bool> ___loadedLevelIsDeleted)
+                Dictionary<string, bool> ___loadedLevelIsDeleted, Dictionary<string, LevelDataCLS> ___loadedLevels)
             {
+                if (_infoObject == null)
+                {
+                    _infoObject = new GameObject();
+                }
+                
                 var settings = MiscModule.Settings;
 
                 if (settings.KeyBinding.CLS.instantJoinKeyActive && !scrController.instance.paused && !___searchMode &&
@@ -61,6 +72,30 @@ namespace AdofaiUtils2.Misc.CustomKeyBinding
                     settings.KeyBinding.CLS.workshopKey.Down())
                 {
                     SteamWorkshop.OpenWorkshop();
+                }
+                
+                if (Input.GetKeyDown(KeyCode.Escape) ||
+                    MiscModule.Settings.KeyBinding.CLS.infoKeyActive &&
+                    MiscModule.Settings.KeyBinding.CLS.infoKey.Down() && !___searchMode)
+                {
+                    if (_levelInfo != null)
+                    {
+                        Object.DestroyImmediate(_levelInfo);
+                        _levelInfo = null;
+                        scrController.instance.paused = false;
+                        scrController.instance.audioPaused = false;
+                        scrController.instance.enabled = true;
+                        Time.timeScale = 1.0f;
+                    }
+                    else if (!__instance.controller.paused && !Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        _levelInfo = _infoObject.AddComponent<LevelInfoBehaviour>();
+                        _levelInfo.SetMap(___loadedLevels[___levelToSelect], ___levelToSelect);
+                        scrController.instance.paused = true;
+                        scrController.instance.audioPaused = true;
+                        scrController.instance.enabled = false;
+                        Time.timeScale = 0.0f;
+                    }
                 }
             }
         }
