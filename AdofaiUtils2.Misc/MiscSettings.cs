@@ -17,17 +17,42 @@ namespace AdofaiUtils2.Misc
             TabName = "기타";
         }
 
-        [XmlIgnore]
-        public bool keyBindCollapse;
-        public bool keyBindEnabled;
-
-        public bool instantJoinKeyActive;
-        public KeyBinding instantJoinKey = new KeyBinding
+        public class KeyBindingSettings
         {
-            keyCode = KeyCode.LeftArrow
-        };
-        [XmlIgnore]
-        public bool instantJoinKeyCollapse;
+            public bool Collapse;
+            public bool Enabled;
+            
+            public class CLSSettings
+            {
+                // CLS 맵 입장 키
+                public bool instantJoinKeyActive = true;
+                public KeyBinding instantJoinKey = new KeyBinding
+                {
+                    keyCode = KeyCode.LeftArrow
+                };
+                public bool instantJoinKeyCollapse;
+        
+                // CLS 에서 워크샵 열기
+                public bool workshopKeyActive = true;
+                public KeyBinding workshopKey = new KeyBinding
+                {
+                    keyCode = KeyCode.W
+                };
+                public bool workshopKeyCollapse;
+                
+                // CLS 맵 목록 리로드
+                public bool reloadKeyActive = true;
+                public KeyBinding reloadKey = new KeyBinding
+                {
+                    keyCode = KeyCode.R
+                };
+                public bool reloadKeyCollapse;
+            }
+
+            public CLSSettings CLS = new CLSSettings();
+        }
+
+        public KeyBindingSettings KeyBinding = new KeyBindingSettings();
 
         private void KeyMapUI(ref KeyBinding key, ref bool active, ref bool collapse, string title)
         {
@@ -69,12 +94,14 @@ namespace AdofaiUtils2.Misc
 
         public override void OnGUI()
         {
-            GUIExtended.CollapsibleWithCheck(ref keyBindCollapse, ref keyBindEnabled, "키바인딩 설정", () =>
+            GUIExtended.CollapsibleWithCheck(ref KeyBinding.Collapse, ref KeyBinding.Enabled, "키바인딩 설정", () =>
             {
-                KeyMapUI(ref instantJoinKey, ref instantJoinKeyActive, ref instantJoinKeyCollapse, "cls에서 맵 바로 입장");
+                KeyMapUI(ref KeyBinding.CLS.instantJoinKey, ref KeyBinding.CLS.instantJoinKeyActive, ref KeyBinding.CLS.instantJoinKeyCollapse, "cls에서 맵 바로 입장");
+                KeyMapUI(ref KeyBinding.CLS.workshopKey, ref KeyBinding.CLS.workshopKeyActive, ref KeyBinding.CLS.workshopKeyCollapse, "스팀 창작마당 열기");
+                KeyMapUI(ref KeyBinding.CLS.reloadKey, ref KeyBinding.CLS.reloadKeyActive, ref KeyBinding.CLS.reloadKeyCollapse, "CLS 새로고침");
             }, () =>
             {
-                if (keyBindEnabled)
+                if (KeyBinding.Enabled)
                 {
                     MiscModule.Harmony.PatchConditionalTag(Assembly.GetExecutingAssembly(), "AdofaiUtils2.Misc.KeyBinding");
                 }

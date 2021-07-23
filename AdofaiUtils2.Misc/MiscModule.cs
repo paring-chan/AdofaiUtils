@@ -43,7 +43,7 @@ namespace AdofaiUtils2.Misc
         private static void StartTweaks()
         {
             SettingsManager.Register(Settings);
-            if (Settings.keyBindEnabled)
+            if (Settings.KeyBinding.Enabled)
             {
                 MiscModule.Harmony.PatchConditionalTag(Assembly.GetExecutingAssembly(), "AdofaiUtils2.Misc.KeyBinding");
             }
