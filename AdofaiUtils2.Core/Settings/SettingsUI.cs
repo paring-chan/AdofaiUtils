@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -69,16 +68,26 @@ namespace AdofaiUtils2.Core.Settings
                 }
             }
         }
+        
+        private readonly float DesignWidth = 960.0f;
+        private readonly float DesignHeight = 540.0f;
 
         private void OnGUI()
         {
             if (!Open) return;
+            
+            float resX = Screen.width / DesignWidth;
+        
+            float resY = Screen.height / DesignHeight;
+            
+            GUI.matrix = Matrix4x4.TRS(new Vector3(0, 0, 0), Quaternion.identity, new Vector3(resX, resY, 1));
+
             GUI.skin = Assets.GUISkin;
 
 
             var guiSettings = current;
 
-            GUILayout.BeginArea(new Rect(50, 50, Screen.width - 100, Screen.height - 100),
+            GUILayout.BeginArea(new Rect(50, 50, DesignWidth - 100, DesignHeight - 100),
                 guiSettings == null ? "AdofaiUtils2 설정" : guiSettings.TabName,
                 GUI.skin.window);
             _tabIndex = GUILayout.Toolbar(_tabIndex, Items);
