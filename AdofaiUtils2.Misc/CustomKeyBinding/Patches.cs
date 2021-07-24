@@ -17,7 +17,9 @@ namespace AdofaiUtils2.Misc.CustomKeyBinding
         private static class ScnEditorStart
         {
             private static MethodBase _printesp = typeof(CustomLevel).GetPrivateMethod("printesp");
-            private static readonly MethodBase SelectFirstFloor = typeof(scnEditor).GetPrivateMethod("SelectFirstFloor");
+
+            private static readonly MethodBase
+                SelectFirstFloor = typeof(scnEditor).GetPrivateMethod("SelectFirstFloor");
 
             internal static bool Prefix(string levelPath, CustomLevel __instance)
             {
@@ -146,7 +148,8 @@ namespace AdofaiUtils2.Misc.CustomKeyBinding
                 }
 
                 if (MiscModule.Settings.KeyBinding.CLS.editorKeyActive &&
-                    MiscModule.Settings.KeyBinding.CLS.editorKey.Down())
+                    MiscModule.Settings.KeyBinding.CLS.editorKey.Down() && !___searchMode &&
+                    !scrController.instance.paused)
                 {
                     if (___loadedLevelIsDeleted[___levelToSelect]) return;
                     string levelPath = Path.Combine(__instance.loadedLevelDirs[___levelToSelect],
