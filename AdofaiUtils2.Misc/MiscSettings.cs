@@ -61,8 +61,21 @@ namespace AdofaiUtils2.Misc
                 };
                 public bool editorKeyCollapse;
             }
+            
+            public class EditorSettings
+            {
+                public bool quitKeyActive = true;
+                public KeyBinding quitKey = new KeyBinding
+                {
+                    keyCode = KeyCode.Q,
+                    modifiers = 1
+                };
+                public bool quitKeyCollapse;
+            }
 
             public CLSSettings CLS = new CLSSettings();
+
+            public EditorSettings Editor = new EditorSettings();
         }
 
         public KeyBindingSettings KeyBinding = new KeyBindingSettings();
@@ -114,6 +127,7 @@ namespace AdofaiUtils2.Misc
                 KeyMapUI(ref KeyBinding.CLS.reloadKey, ref KeyBinding.CLS.reloadKeyActive, ref KeyBinding.CLS.reloadKeyCollapse, "CLS 새로고침");
                 KeyMapUI(ref KeyBinding.CLS.infoKey, ref KeyBinding.CLS.infoKeyActive, ref KeyBinding.CLS.infoKeyCollapse, "맵 정보 보기");
                 KeyMapUI(ref KeyBinding.CLS.editorKey, ref KeyBinding.CLS.editorKeyActive, ref KeyBinding.CLS.editorKeyCollapse, "CLS에서 맵 에디터 바로 입장");
+                KeyMapUI(ref KeyBinding.Editor.quitKey, ref KeyBinding.Editor.quitKeyActive, ref KeyBinding.Editor.quitKeyCollapse, "에디터 나가기");
             }, () =>
             {
                 if (KeyBinding.Enabled)

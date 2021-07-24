@@ -17,9 +17,7 @@ namespace AdofaiUtils2.Misc.CustomKeyBinding
         private static class ScnEditorStart
         {
             private static MethodBase _printesp = typeof(CustomLevel).GetPrivateMethod("printesp");
-
-            private static MethodBase _setupConductorWithLevelData =
-                typeof(CustomLevel).GetPrivateMethod("SetupConductorWithLevelData");
+            private static readonly MethodBase SelectFirstFloor = typeof(scnEditor).GetPrivateMethod("SelectFirstFloor");
 
             internal static bool Prefix(string levelPath, CustomLevel __instance)
             {
@@ -31,22 +29,24 @@ namespace AdofaiUtils2.Misc.CustomKeyBinding
                 Invoke(_printesp, (object) "");
                 int num = __instance.LoadLevel(levelPath) ? 1 : 0;
                 if (num == 0)
-                    return num != 0;
+                    return false;
                 __instance.editor.filenameText.text = Path.GetFileName(levelPath);
                 __instance.editor.filenameText.fontStyle = FontStyle.Bold;
                 __instance.conductor.SetupConductorWithLevelData(__instance.levelData);
                 __instance.RemakePath();
                 __instance.ReloadAssets();
-                DiscordController.instance?.UpdatePresence();
+                DiscordController.instance.UpdatePresence();
                 if (editor)
                 {
                     editor = false;
+                    __instance.editor.Run(SelectFirstFloor);
                     return false;
                 }
                 else
                 {
                     __instance.Play();
                 }
+
                 return false;
             }
         }
@@ -71,7 +71,8 @@ namespace AdofaiUtils2.Misc.CustomKeyBinding
                     if (check(settings.KeyBinding.CLS.reloadKeyActive, settings.KeyBinding.CLS.reloadKey.Down()) ||
                         check(settings.KeyBinding.CLS.workshopKeyActive, settings.KeyBinding.CLS.workshopKey.Down()) ||
                         check(settings.KeyBinding.CLS.instantJoinKeyActive,
-                            settings.KeyBinding.CLS.instantJoinKey.Down()))
+                            settings.KeyBinding.CLS.instantJoinKey.Down()) ||
+                        check(settings.KeyBinding.CLS.editorKeyActive, settings.KeyBinding.CLS.editorKey.Down()))
                     {
                         __result = true;
                         return false;
@@ -159,6 +160,30 @@ namespace AdofaiUtils2.Misc.CustomKeyBinding
                     // __instance.editor.SwitchToEditMode();
                     return;
                 }
+            }
+        }
+
+        [PatchTag("AdofaiUtils2.Misc.KeyBinding")]
+        [PatchCondition("AdofaiUtils2.Misc.KeyBinding.scnEditorUpdate", "scnEditor", "Update")]
+        internal static class ScnEditorUpdate
+        {
+            private static readonly MethodBase TryQuitToMenu = typeof(scnEditor).GetPrivateMethod("TryQuitToMenu");
+
+            private static bool Prefix(scnEditor __instance)
+            {
+                var settings = MiscModule.Settings;
+
+                if (settings.KeyBinding.Editor.quitKeyActive && settings.KeyBinding.Editor.quitKey.Down())
+                {
+                    if (GCS.standaloneLevelMode)
+                    {
+                        return true;
+                    }
+
+                    __instance.Run(TryQuitToMenu);
+                }
+
+                return true;
             }
         }
     }
