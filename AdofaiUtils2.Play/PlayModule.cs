@@ -8,9 +8,10 @@ namespace AdofaiUtils2.Play
 {
     public static class PlayModule
     {
-        internal static UnityModManager.ModEntry ModEntry;
+        public static UnityModManager.ModEntry ModEntry;
+        public static PlaySettings Settings;
 
-        public static Harmony Harmony
+        internal static Harmony Harmony
         {
             get;
             private set;
@@ -39,11 +40,13 @@ namespace AdofaiUtils2.Play
 
         private static void StartTweaks()
         {
+            Settings = SettingsManager.Load<PlaySettings>();
+            SettingsManager.Register(Settings);
         }
 
         private static void StopTweaks()
         {
-            // SettingsManager.Unregister(Settings);
+            SettingsManager.Unregister(Settings);
             Harmony.UnpatchConditionalAll(Assembly.GetExecutingAssembly());
             Harmony.UnpatchAll();
         }
