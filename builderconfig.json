@@ -13,6 +13,10 @@
     {
       "mod": "AdofaiUtils2.Misc",
       "extraFiles": []
+    },
+    {
+      "mod": "AdofaiUtils2.Play",
+      "extraFiles": []
     }
   ],
   "launchAdofai": true,

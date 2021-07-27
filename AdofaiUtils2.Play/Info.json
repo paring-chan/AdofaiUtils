@@ -1,0 +1,9 @@
+{
+  "Id": "AdofaiUtils2.Play",
+  "DisplayName": "AdofaiUtils Play Module",
+  "Author": "PIKOKR",
+  "Version": "0.0.1",
+  "AssemblyName": "AdofaiUtils2.Play.dll",
+  "EntryMethod": "AdofaiUtils2.Play.PlayModule.Load",
+  "Repository": "https://raw.githubusercontent.com/pikokr/AdofaiUtils2/master/Repository.json"
+}
