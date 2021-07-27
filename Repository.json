@@ -3,12 +3,17 @@
     {
       "Id": "AdofaiUtils2.Core",
       "Version": "0.0.1",
-      "DownloadUrl": "https://github.com/pikokr/AdofaiUtils2/releases/download/0.0.1/AdofaiUtils2.Core-0.0.1.zip"
+      "DownloadUrl": "https://github.com/pikokr/AdofaiUtils2/releases/download/0.0.1-play/AdofaiUtils2.Core.zip"
     },
     {
       "Id": "AdofaiUtils2.Misc",
       "Version": "0.0.2",
-      "DownloadUrl": "https://github.com/pikokr/AdofaiUtils2/releases/download/0.0.2-misc/AdofaiUtils2.Misc-0.0.2.zip"
+      "DownloadUrl": "https://github.com/pikokr/AdofaiUtils2/releases/download/0.0.1-play/AdofaiUtils2.Misc.zip"
+    },
+    {
+      "Id": "AdofaiUtils2.Play",
+      "Version": "0.0.1",
+      "DownloadUrl": "https://github.com/pikokr/AdofaiUtils2/releases/download/0.0.1-play/AdofaiUtils2.Play.zip"
     }
   ]
 }
