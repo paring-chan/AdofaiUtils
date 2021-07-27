@@ -1,4 +1,6 @@
+using System.Reflection;
 using AdofaiUtils2.Core.Settings;
+using AdofaiUtils2.Core.Util;
 using UnityEngine;
 
 namespace AdofaiUtils2.Play
@@ -20,7 +22,20 @@ namespace AdofaiUtils2.Play
 
         public override void OnGUI()
         {
-            Hide10 = GUILayout.Toggle(Hide10, "1.0배 텍스트 숨기기");
+            var Hide10New = GUILayout.Toggle(Hide10, "1.0배 텍스트 숨기기");
+            if (Hide10New != Hide10)
+            {
+                if (Hide10New)
+                {
+                    PlayModule.Harmony.PatchConditionalTag(Assembly.GetExecutingAssembly(), "AdofaiUtils2.Play.Hide10");
+                }
+                else
+                {
+                    PlayModule.Harmony.UnpatchConditionalTag(Assembly.GetExecutingAssembly(), "AdofaiUtils2.Play.Hide10");
+                }
+
+                Hide10 = Hide10New;
+            }
         }
     }
 }

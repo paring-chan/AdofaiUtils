@@ -380,6 +380,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Patches.cs" />
         <Compile Include="PlayModule.cs" />
         <Compile Include="PlaySettings.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

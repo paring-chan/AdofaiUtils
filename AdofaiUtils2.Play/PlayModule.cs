@@ -42,6 +42,10 @@ namespace AdofaiUtils2.Play
         {
             Settings = SettingsManager.Load<PlaySettings>();
             SettingsManager.Register(Settings);
+            if (Settings.Hide10)
+            {
+                PlayModule.Harmony.PatchConditionalTag(Assembly.GetExecutingAssembly(), "AdofaiUtils2.Play.Hide10");
+            }
         }
 
         private static void StopTweaks()
