@@ -1,5 +1,6 @@
 {
   "modsPath": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\A Dance of Fire and Ice\\Mods",
+  "releaseName": "AdofaiUtils2",
   "outputs": [
     {
       "mod": "AdofaiUtils2.Core",
