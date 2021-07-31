@@ -21,7 +21,12 @@
     },
     {
       "mod": "AdofaiUtils2.Editor",
-      "extraFiles": []
+      "extraFiles": [
+        {
+          "file": "UnityProject/Assets/AssetBundles/adofaiutils2.editor.assets",
+          "root": true
+        }
+      ]
     }
   ],
   "launchAdofai": false,

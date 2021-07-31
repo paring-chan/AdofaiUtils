@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 3991034161
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ffae95ef0ab7049db06b91bbd710ec70
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9e6ad29cbd2df8fbe1a15315db0e51ab
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Sprites/Triangle.png
+Dependencies: []

@@ -36,6 +36,7 @@
       <Compile Include="Attribute\PatchCondition.cs" />
       <Compile Include="Attribute\PatchTag.cs" />
       <Compile Include="CoreModule.cs" />
+      <Compile Include="GlobalContants.cs" />
       <Compile Include="Settings\CoreSettings.cs" />
       <Compile Include="Settings\GUIExtended.cs" />
       <Compile Include="Settings\SettingsBase.cs" />

@@ -19,16 +19,17 @@ namespace AdofaiUtils2.Editor
             modEntry.OnToggle = OnToggle;
             #if DEBUG
             modEntry.OnUnload = Unload;
-            Debug.Log("asdfasfdasdfdasdfadf");
             #endif
+            Assets.Init();
             Harmony = new Harmony(modEntry.Info.Id);
             return true;
         }
         
         #if DEBUG
-        public static bool Unload(UnityModManager.ModEntry modeNtry)
+        public static bool Unload(UnityModManager.ModEntry modEntry)
         {
             StopTweaks();
+            Assets.Bundle.Unload(true);
             return true;
         }
         #endif
