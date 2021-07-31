@@ -18,8 +18,12 @@
     {
       "mod": "AdofaiUtils2.Play",
       "extraFiles": []
+    },
+    {
+      "mod": "AdofaiUtils2.Editor",
+      "extraFiles": []
     }
   ],
-  "launchAdofai": true,
+  "launchAdofai": false,
   "msbuild": "C:\\Program Files\\JetBrains\\JetBrains Rider 2021.1.3\\tools\\MSBuild\\Current\\Bin\\MSBuild.exe"
 }
