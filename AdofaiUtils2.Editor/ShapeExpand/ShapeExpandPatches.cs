@@ -37,6 +37,7 @@ namespace AdofaiUtils2.Editor.ShapeExpand
                 component2.page = asdf / 7;
                 component2.keyCode = asdf % 7 + 1;
                 component2.icon.sprite = Assets.Triangle;
+                component2.enabled = false;
                 component2.button.onClick.AddListener(() =>
                 {
                     Debug.Log("와아아");
