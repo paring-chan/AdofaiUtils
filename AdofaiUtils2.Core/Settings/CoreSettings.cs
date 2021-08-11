@@ -18,7 +18,7 @@ namespace AdofaiUtils2.Core.Settings
         public KeyBinding settingsKey = new KeyBinding
         {
             keyCode = KeyCode.Comma,
-            modifiers = 1
+            modifiers = 4
         };
 
         public override void Save()
