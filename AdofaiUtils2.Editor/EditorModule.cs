@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using AdofaiUtils2.Core.Settings;
 using AdofaiUtils2.Core.Util;
 using HarmonyLib;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace AdofaiUtils2.Editor
         public static UnityModManager.ModEntry ModEntry;
         internal static Harmony Harmony { get; private set; }
 
+        public static EditorSettings Settings;
+
         private static bool Load(UnityModManager.ModEntry modEntry)
         {
             modEntry.OnToggle = OnToggle;
@@ -28,7 +31,6 @@ namespace AdofaiUtils2.Editor
         #if DEBUG
         public static bool Unload(UnityModManager.ModEntry modEntry)
         {
-            StopTweaks();
             Assets.Bundle.Unload(true);
             return true;
         }
@@ -51,11 +53,17 @@ namespace AdofaiUtils2.Editor
 
         private static void StartTweaks()
         {
-            Harmony.PatchConditionalTag(Assembly.GetExecutingAssembly(), "AdofaiUtils2.Editor.ForcePatch");
+            Settings = SettingsManager.Load<EditorSettings>();
+            SettingsManager.Register(Settings);
+            if (Settings.ShowBeats)
+            {
+                EditorModule.Harmony.PatchConditionalTag(Assembly.GetExecutingAssembly(), "AdofaiUtils2.Editor.ShowBeats");
+            }
         }
 
         private static void StopTweaks()
         {
+            SettingsManager.Unregister(Settings);
             Harmony.UnpatchConditionalAll(Assembly.GetExecutingAssembly());
         }
     }
