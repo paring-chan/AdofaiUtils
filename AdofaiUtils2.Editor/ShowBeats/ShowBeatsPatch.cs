@@ -30,6 +30,7 @@ namespace AdofaiUtils2.Editor.ShowBeats
                 var lastPos = last.transform.position;
 
                 GameObject gameObject = Object.Instantiate(editor.prefab_editorNum);
+                _obj = gameObject;
                 gameObject.transform.position = new Vector3(firstPos.x + ((lastPos.x - firstPos.x) / 2),
                     firstPos.y + ((lastPos.y - firstPos.y) / 2), firstPos.z);
                 double beats = 0;
@@ -38,12 +39,12 @@ namespace AdofaiUtils2.Editor.ShowBeats
                 {
                     editor.controller.lm.CalculateFloorAngleLengths();
                     var currentFloor = editor.selectedFloors[i];
-                    beats += Mathf.Round((float) currentFloor.angleLength * 57.29578f) / 180;
+                    var res = (Mathf.Round((float) currentFloor.angleLength * 57.29578f) / 180);
+                    beats += res * (first.speed / currentFloor.speed);
                 }
 
                 gameObject.GetComponent<scrLetterPress>().letterText.text =
                     beats.ToString(CultureInfo.InvariantCulture);
-                _obj = gameObject;
             }
         }
     }
