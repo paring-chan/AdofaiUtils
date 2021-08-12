@@ -40,7 +40,7 @@ namespace AdofaiUtils2.Editor.ShowBeats
                     editor.controller.lm.CalculateFloorAngleLengths();
                     var currentFloor = editor.selectedFloors[i];
                     var res = (Mathf.Round((float) currentFloor.angleLength * 57.29578f) / 180);
-                    beats += res * (first.speed / currentFloor.speed);
+                    beats += Mathf.Round(res * (first.speed / currentFloor.speed));
                 }
 
                 gameObject.GetComponent<scrLetterPress>().letterText.text =
