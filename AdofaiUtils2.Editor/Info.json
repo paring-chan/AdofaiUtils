@@ -1,9 +1,0 @@
-{
-  "Id": "AdofaiUtils2.Editor",
-  "DisplayName": "AdofaiUtils Editor Module",
-  "Author": "PIKOKR",
-  "Version": "0.0.2",
-  "AssemblyName": "AdofaiUtils2.Editor.dll",
-  "EntryMethod": "AdofaiUtils2.Editor.EditorModule.Load",
-  "Repository": "https://raw.githubusercontent.com/pikokr/AdofaiUtils2/master/Repository.json"
-}
