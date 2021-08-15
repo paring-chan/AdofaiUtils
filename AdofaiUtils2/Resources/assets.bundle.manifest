@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1432932254
+CRC: 3247199692
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 178a0f931614783d6bc06bccf749bd7f
+    Hash: 2b6bbaba4c2f73525ea4d9c147c3bef5
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 85a1a1d608815d044fc4cc012d0986ff
+    Hash: 5b68a23e2e655e2d6b6ccf26a9a7be26
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -14,7 +14,13 @@ ClassTypes:
 - Class: 28
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 213
@@ -24,5 +30,8 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
+- Assets/Sprites/UI/Scroll Bar Background.png
+- Assets/Sprites/UI/UI Container.png
+- Assets/Sprites/UI/Scroll Bar Handle.png
 - Assets/Prefab/SettingsContainer.prefab
 Dependencies: []
