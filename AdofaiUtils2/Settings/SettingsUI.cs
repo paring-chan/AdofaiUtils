@@ -19,17 +19,11 @@ namespace AdofaiUtils2.Settings
 
         public SettingsUI()
         {
-            try
-            {
-                Container = Object.Instantiate(Assets.Bundle.LoadAsset<GameObject>("Assets/prefab/SettingsContainer.prefab"));
-                Container.transform.SetParent(ui.Canvas.transform, false);
-                Container.SetActive(false);
-            }
-            catch (Exception e)
-            {
-                MelonLogger.Error(e);
-                throw;
-            }
+            Container = Object.Instantiate(
+                Assets.Bundle.LoadAsset<GameObject>("Assets/prefab/SettingsContainer.prefab"));
+            Container.transform.SetParent(ui.Canvas.transform, false);
+            Container.AddComponent<SettingsContainerBehaviour>();
+            Container.SetActive(false);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Windows.Forms.VisualStyles;
 using AdofaiUtils2.Settings;
 using AdofaiUtils2.UI;
 using AdofaiUtils2.Utils;
@@ -19,6 +18,7 @@ namespace AdofaiUtils2
             Assets.Init();
             MelonLogger.Msg("Initialized Core.");
             AdofaiUtils2Behaviour.Instance.StartCoroutine(SetupCoro());
+            this.HarmonyInstance.TaggedPatch("Settings");
         }
 
         private static IEnumerator SetupCoro()

@@ -37,3 +37,4 @@ using MelonLoader;
 
 [assembly:MelonInfo(typeof(AdofaiUtils2.AdofaiUtils2), "AdofaiUtils2", "0.1.0", "pikokr")]
 [assembly:MelonGame("7th Beat Games", "A Dance of Fire and Ice")]
+[assembly:HarmonyDontPatchAll]

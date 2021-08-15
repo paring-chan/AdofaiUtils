@@ -1,15 +1,20 @@
-using System;
 using AdofaiUtils2.Utils;
-using MelonLoader;
+using UnityEngine;
 
 namespace AdofaiUtils2.Settings
 {
     public class SettingsContainerBehaviour : BaseBehaviour
     {
-        private void Awake()
+        private void Update()
         {
-            transform.SetParent(ui.CanvasRoot.transform);
-            MelonLogger.Msg("와아앙");
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                gameObject.SetActive(false);
+                scrController.instance.paused = false;
+                scrController.instance.audioPaused = false;
+                scrController.instance.enabled = true;
+                Time.timeScale = 1.0f;
+            }
         }
     }
 }
