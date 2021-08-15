@@ -1,27 +1,47 @@
 ManifestFileVersion: 0
-CRC: 3247199692
+CRC: 2797741664
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2b6bbaba4c2f73525ea4d9c147c3bef5
+    Hash: 1f5e60cf4093de31a5ff1d067aa3753d
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 5b68a23e2e655e2d6b6ccf26a9a7be26
+    Hash: 4ba97591e582bd6baa5f3d5fe07190ae
 HashAppended: 0
 ClassTypes:
 - Class: 1
   Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
 - Class: 28
   Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: bed52ea8726c08d4e9396b72a38490ce, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 65018001467048609e7a888c3f41aa9e, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 128
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
@@ -33,5 +53,8 @@ Assets:
 - Assets/Sprites/UI/Scroll Bar Background.png
 - Assets/Sprites/UI/UI Container.png
 - Assets/Sprites/UI/Scroll Bar Handle.png
+- Assets/Prefab/Tweak.prefab
 - Assets/Prefab/SettingsContainer.prefab
+- Assets/Sprites/UI/Toggle Checkmark.png
+- Assets/Sprites/UI/Toggle Background.png
 Dependencies: []

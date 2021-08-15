@@ -15,7 +15,7 @@ namespace AdofaiUtils2
             MelonLogger.Msg("Initializing...");
             AdofaiUtils2Behaviour.Setup();
             MelonLogger.Msg("Loading Assets...");
-            Assets.Init();
+            // Assets.Init();
             MelonLogger.Msg("Initialized Core.");
             AdofaiUtils2Behaviour.Instance.StartCoroutine(SetupCoro());
             this.HarmonyInstance.TaggedPatch("Settings");

@@ -61,7 +61,7 @@ namespace AdofaiUtils2.UI
                 Canvas = CanvasRoot.AddComponent<Canvas>();
                 Canvas.renderMode = RenderMode.ScreenSpaceOverlay;
                 Canvas.referencePixelsPerUnit = 100;
-                Canvas.sortingOrder = 1000;
+                Canvas.sortingOrder = 998; // under unityexplorer canvas
             
                 CanvasScaler scaler = CanvasRoot.AddComponent<CanvasScaler>();
                 scaler.referenceResolution = new Vector2(1920, 1080);
