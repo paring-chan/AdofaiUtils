@@ -32,11 +32,11 @@ namespace AdofaiUtils2.UI
             return obj;
         }
 
-        public static GameObject ScrollView;
+        public static GameObject Toggle;
 
         public static void Init()
         {
-            ScrollView = Assets.Bundle.LoadAsset<GameObject>("Assets/Prefab/Scroll View.prefab");
+            Toggle = Assets.Bundle.LoadAsset<GameObject>("Assets/Prefab/Toggle.prefab");
         }
 
         // public static GameObject CreateScrollBar(GameObject parent, string name, out Scrollbar scrollbar)

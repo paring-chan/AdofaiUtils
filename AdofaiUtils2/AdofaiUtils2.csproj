@@ -390,7 +390,11 @@
         <Compile Include="Utils\AdofaiUtils2Behaviour.cs" />
         <Compile Include="Utils\BaseBehaviour.cs" />
         <Compile Include="Utils\TaggedPatch.cs" />
+        <Compile Include="Utils\Tweak.cs" />
         <EmbeddedResource Include="Resources\assets.bundle" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Tweaks" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
