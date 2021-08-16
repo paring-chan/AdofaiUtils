@@ -44,10 +44,11 @@ namespace AdofaiUtils2.Utils
                 var tweak = new GameObject("Tweak");
                 var tweakVR = tweak.AddComponent<VerticalLayoutGroup>();
                 tweakVR.childForceExpandHeight = false;
-                tweak.AddComponent<LayoutElement>();
+                var le = tweak.AddComponent<LayoutElement>();
                 tweak.transform.SetParent(SettingsUI.Instance.Content.transform);
                 var toggle = Object.Instantiate(UIFactory.Toggle, tweak.transform);
                 var tt = toggle.transform.GetChild(1).gameObject.GetComponent<Text>();
+                toggle.AddComponent<LayoutElement>().preferredHeight = 50.0f;
                 tt.text = attr.Name;
             }
         }

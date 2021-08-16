@@ -374,7 +374,6 @@ GameObject:
   - component: {fileID: 1927030636}
   - component: {fileID: 1927030635}
   - component: {fileID: 1927030634}
-  - component: {fileID: 1927030638}
   - component: {fileID: 1927030639}
   m_Layer: 5
   m_Name: Canvas
@@ -462,31 +461,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1927030638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927030633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 0
 --- !u!114 &1927030639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,3 +474,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggle: {fileID: 322587279019569864, guid: bdc3fd7aefb83f444be8b2267067c2ed, type: 3}
+  scrollView: {fileID: 1972586838572901185, guid: 105b93072db226846b95aaea635c0544,
+    type: 3}

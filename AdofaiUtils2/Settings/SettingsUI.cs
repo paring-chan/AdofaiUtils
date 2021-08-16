@@ -24,17 +24,16 @@ namespace AdofaiUtils2.Settings
         {
             try
             {
-                Container = UIFactory.createPanel("Settings", ui.CanvasRoot);
-                Container.AddComponent<SettingsContainerBehaviour>();
-                var rect = Container.GetComponent<RectTransform>();
-                rect.offsetMin = new Vector2(30, 30);
-                rect.offsetMax = -new Vector2(30, 30);
-                Content = UIFactory.createPanel("Content", Container);
-                var cr = Content.GetComponent<RectTransform>();
-                cr.offsetMin = new Vector2(30, 30);
-                cr.offsetMax = -new Vector2(30, 30);
+                Container = Object.Instantiate(UIFactory.ScrollView, ui.CanvasRoot.transform);
+                Container.name = "Settings";
+                var tr = Container.transform as RectTransform;
+                tr.offsetMin = new Vector2(30, 30);
+                tr.offsetMax = -new Vector2(30, 30);
+                Content = Container.transform.GetChild(0).GetChild(0).gameObject;
                 var contentVR = Content.AddComponent<VerticalLayoutGroup>();
                 contentVR.childForceExpandHeight = false;
+                contentVR.padding = new RectOffset(30, 30, 30, 30);
+                contentVR.spacing = 30.0f;
                 Container.SetActive(false);
             }
             catch (Exception e)

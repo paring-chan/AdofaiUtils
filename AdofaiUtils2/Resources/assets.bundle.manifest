@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1784259804
+CRC: 394722720
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 482750d2e7f8617a8d1b494221ab9b9c
+    Hash: fe7bd3c2a02d8b5aca101f1323957f4d
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e47be019dcad709c9456f976c180ddcc
+    Hash: 379362c4bb6b140c0c38d25dee626d38
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -20,9 +20,15 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
 - Class: 115
@@ -39,6 +45,7 @@ Assets:
 - Assets/Sprites/UI/Scroll Bar Background.png
 - Assets/Sprites/UI/UI Container.png
 - Assets/Sprites/UI/Scroll Bar Handle.png
+- Assets/Prefab/Scroll View.prefab
 - Assets/Prefab/Toggle.prefab
 - Assets/Sprites/UI/Toggle Checkmark.png
 - Assets/Fonts/godoMaum.ttf
