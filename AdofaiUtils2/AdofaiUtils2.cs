@@ -10,10 +10,19 @@ namespace AdofaiUtils2
 {
     public class AdofaiUtils2: MelonMod
     {
+        public static AdofaiUtils2 instance;
+        
+        public AdofaiUtils2()
+        {
+            instance = this;
+        }
+        
         public override void OnApplicationStart()
         {
             MelonLogger.Msg("Initializing...");
             AdofaiUtils2Behaviour.Setup();
+            MelonLogger.Msg("Loading Configuration....");
+            Utils.Utils.LoadTweaks();
             MelonLogger.Msg("Loading Assets...");
             Assets.Init();
             MelonLogger.Msg("Initialized Core.");

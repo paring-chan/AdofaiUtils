@@ -35,14 +35,6 @@ namespace AdofaiUtils2.Settings
                 cr.offsetMax = -new Vector2(30, 30);
                 var contentVR = Content.AddComponent<VerticalLayoutGroup>();
                 contentVR.childForceExpandHeight = false;
-                var tweak = new GameObject("Tweak");
-                var tweakVR = tweak.AddComponent<VerticalLayoutGroup>();
-                tweakVR.childForceExpandHeight = false;
-                tweak.AddComponent<LayoutElement>();
-                tweak.transform.SetParent(Content.transform);
-                var toggle = Object.Instantiate(UIFactory.Toggle, tweak.transform);
-                var tt = toggle.transform.GetChild(1).gameObject.GetComponent<Text>();
-                tt.text = "테스트";
                 Container.SetActive(false);
             }
             catch (Exception e)

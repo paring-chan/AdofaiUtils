@@ -1,6 +1,5 @@
 using AdofaiUtils2.Settings;
 using AdofaiUtils2.UI;
-using UnityEngine;
 
 namespace AdofaiUtils2.Utils
 {

@@ -16,6 +16,7 @@ namespace AdofaiUtils2.Settings
             Instance = new SettingsManager();
             UIFactory.Init();
             SettingsUI.Init();
+            Utils.Utils.RenderTweakSettings();
         }
     }
 }

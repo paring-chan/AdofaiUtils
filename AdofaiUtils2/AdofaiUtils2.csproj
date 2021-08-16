@@ -384,17 +384,21 @@
         <Compile Include="Settings\SettingsManager.cs" />
         <Compile Include="Settings\SettingsPatch.cs" />
         <Compile Include="Settings\SettingsUI.cs" />
+        <Compile Include="Tweaks\Editor\EditorTweak.cs" />
+        <Compile Include="Tweaks\Editor\EditorTweakPatches.cs" />
+        <Compile Include="Tweaks\Editor\EditorTweakSettings.cs" />
         <Compile Include="UI\UIFactory.cs" />
         <Compile Include="UI\UIManager.cs" />
         <Compile Include="Utils\AdofaiUtils2Base.cs" />
         <Compile Include="Utils\AdofaiUtils2Behaviour.cs" />
+        <Compile Include="Utils\attribute\Settings.cs" />
+        <Compile Include="Utils\attribute\AddTweak.cs" />
         <Compile Include="Utils\BaseBehaviour.cs" />
         <Compile Include="Utils\TaggedPatch.cs" />
         <Compile Include="Utils\Tweak.cs" />
+        <Compile Include="Utils\TweakSettings.cs" />
+        <Compile Include="Utils\Utils.cs" />
         <EmbeddedResource Include="Resources\assets.bundle" />
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Tweaks" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
