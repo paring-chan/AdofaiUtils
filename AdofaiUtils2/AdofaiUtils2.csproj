@@ -384,12 +384,12 @@
         <Compile Include="Settings\SettingsManager.cs" />
         <Compile Include="Settings\SettingsPatch.cs" />
         <Compile Include="Settings\SettingsUI.cs" />
+        <Compile Include="UI\UIFactory.cs" />
         <Compile Include="UI\UIManager.cs" />
         <Compile Include="Utils\AdofaiUtils2Base.cs" />
         <Compile Include="Utils\AdofaiUtils2Behaviour.cs" />
         <Compile Include="Utils\BaseBehaviour.cs" />
         <Compile Include="Utils\TaggedPatch.cs" />
-        <Compile Include="..\Unity\Assets\Scripts\*.cs"/>
         <EmbeddedResource Include="Resources\assets.bundle" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

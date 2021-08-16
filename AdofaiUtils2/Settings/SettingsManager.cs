@@ -1,6 +1,8 @@
 // using AdofaiUtils2.UI;
 // using UnityEngine;
 
+using AdofaiUtils2.UI;
+
 namespace AdofaiUtils2.Settings
 {
     public class SettingsManager
@@ -12,7 +14,7 @@ namespace AdofaiUtils2.Settings
         public static void Init()
         {
             Instance = new SettingsManager();
-            // TweakPrefab = Assets.Bundle.LoadAsset<GameObject>("Assets/Prefab/Tweak.prefab");
+            UIFactory.Init();
             SettingsUI.Init();
         }
     }
