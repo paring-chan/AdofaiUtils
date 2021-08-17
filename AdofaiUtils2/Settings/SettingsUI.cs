@@ -25,6 +25,7 @@ namespace AdofaiUtils2.Settings
             try
             {
                 Container = Object.Instantiate(UIFactory.ScrollView, ui.CanvasRoot.transform);
+                Container.AddComponent<SettingsContainerBehaviour>();
                 Container.name = "Settings";
                 var tr = Container.transform as RectTransform;
                 tr.offsetMin = new Vector2(30, 30);

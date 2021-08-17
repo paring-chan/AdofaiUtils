@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using AdofaiUtils2.Settings;
 using AdofaiUtils2.UI;
 using AdofaiUtils2.Utils.attribute;
+using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,7 +40,7 @@ namespace AdofaiUtils2.Utils
             foreach (var t in TweakList)
             {
                 var settings = SettingsMap[t];
-                var st = settings.GetType();
+                // var st = settings.GetType();
                 var attr = t.GetType().GetCustomAttribute<AddTweak>();
                 var tweak = new GameObject("Tweak");
                 var tweakVR = tweak.AddComponent<VerticalLayoutGroup>();
@@ -49,7 +50,65 @@ namespace AdofaiUtils2.Utils
                 var toggle = Object.Instantiate(UIFactory.Toggle, tweak.transform);
                 var tt = toggle.transform.GetChild(1).gameObject.GetComponent<Text>();
                 toggle.AddComponent<LayoutElement>().preferredHeight = 50.0f;
+                var toggleC = toggle.GetComponent<UnityEngine.UI.Toggle>();
+                toggleC.onValueChanged.AddListener(arg0 =>
+                {
+                    if (settings.enabled != arg0)
+                    {
+                        settings.enabled = arg0;
+                        if (settings.enabled)
+                        {
+                            EnableTweak(t, attr.PatchesType);
+                        }
+                        else
+                        {
+                            DisableTweak(t, attr.PatchesType);
+                        }
+                    }
+                });
+                if (settings.enabled)
+                {
+                    EnableTweak(t, attr.PatchesType);
+                }
                 tt.text = attr.Name;
+            }
+        }
+
+        private static void DisableTweak(Tweak t, Type patchesType)
+        {
+            var subclasses =
+                from type in patchesType.GetTypeInfo().DeclaredNestedTypes
+                where type.GetCustomAttribute<HarmonyPatch>() != null
+                select type;
+            foreach (var subclass in subclasses)
+            {
+                var meta = subclass.GetCustomAttribute<HarmonyPatch>();
+                var orig = meta.info.method;
+                foreach (var methodInfo in subclass.GetMethods())
+                {
+                    AdofaiUtils2.instance.HarmonyInstance.Unpatch(orig, methodInfo);
+                }
+            }
+        }
+
+        private static void EnableTweak(Tweak t, Type patchesType)
+        {
+            try
+            {
+                var subclasses =
+                    from type in patchesType.GetTypeInfo().DeclaredNestedTypes
+                    where type.GetCustomAttribute<HarmonyPatch>() != null
+                    select type;
+                foreach (var subclass in subclasses)
+                {
+                    AdofaiUtils2.instance.HarmonyInstance.CreateClassProcessor(subclass).Patch();
+                    MelonLogger.Msg($"Patched: {subclass.FullName}");
+                }
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error($"Patch Error: {e}");
+                throw;
             }
         }
         
