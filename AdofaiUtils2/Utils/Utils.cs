@@ -76,18 +76,27 @@ namespace AdofaiUtils2.Utils
 
         private static void DisableTweak(Tweak t, Type patchesType)
         {
-            var subclasses =
-                from type in patchesType.GetTypeInfo().DeclaredNestedTypes
-                where type.GetCustomAttribute<HarmonyPatch>() != null
-                select type;
-            foreach (var subclass in subclasses)
+            try
             {
-                var meta = subclass.GetCustomAttribute<HarmonyPatch>();
-                var orig = meta.info.method;
-                foreach (var methodInfo in subclass.GetMethods())
+                var subclasses =
+                    from type in patchesType.GetTypeInfo().DeclaredNestedTypes
+                    where type.GetCustomAttribute<HarmonyPatch>() != null
+                    select type;
+                foreach (var subclass in subclasses)
                 {
-                    AdofaiUtils2.instance.HarmonyInstance.Unpatch(orig, methodInfo);
+                    var meta = subclass.GetCustomAttribute<HarmonyPatch>();
+                    var orig = meta.info.method;
+                    foreach (var methodInfo in subclass.GetMethods())
+                    {
+                        AdofaiUtils2.instance.HarmonyInstance.Unpatch(orig, methodInfo);
+                    }
+                    MelonLogger.Msg($"Unpatched: {subclass.FullName}");
                 }
+            }
+            catch (Exception e)
+            {
+                MelonLogger.Error($"Unpatch Error: {e}");
+                throw;
             }
         }
 
