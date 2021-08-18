@@ -18,12 +18,12 @@ namespace AdofaiUtils2.Utils
     public static class Utils
     {
         public static bool SettingsOpen;
-        
+
         private static readonly string SettingsPath = Path.Combine("Mods", "AdofaiUtils2", "Config");
-        
+
         public static readonly Dictionary<Tweak, TweakSettings> SettingsMap = new Dictionary<Tweak, TweakSettings>();
 
-        public static Dictionary<Tweak, GameObject> TweakObjects = new Dictionary<Tweak, GameObject>();
+        public static readonly Dictionary<Tweak, GameObject> TweakObjects = new Dictionary<Tweak, GameObject>();
         public static readonly List<Tweak> TweakList = new List<Tweak>();
 
         public static void LoadTweaks()
@@ -42,17 +42,23 @@ namespace AdofaiUtils2.Utils
             foreach (var t in TweakList)
             {
                 var settings = SettingsMap[t];
-                // var st = settings.GetType();
+                var st = settings.GetType();
                 var attr = t.GetType().GetCustomAttribute<AddTweak>();
                 var tweak = new GameObject("Tweak");
+                TweakObjects[t] = tweak;
                 var tweakVR = tweak.AddComponent<VerticalLayoutGroup>();
                 tweakVR.childForceExpandHeight = false;
-                var le = tweak.AddComponent<LayoutElement>();
+                tweakVR.childControlWidth = true;
+                tweakVR.spacing = 10.0f;
+                tweak.AddComponent<LayoutElement>();
                 tweak.transform.SetParent(SettingsUI.Instance.Content.transform);
                 var toggle = Object.Instantiate(UIFactory.Toggle, tweak.transform);
                 var tt = toggle.transform.GetChild(1).gameObject.GetComponent<Text>();
                 toggle.AddComponent<LayoutElement>().preferredHeight = 50.0f;
                 var toggleC = toggle.GetComponent<UnityEngine.UI.Toggle>();
+
+                toggleC.isOn = settings.enabled;
+
                 toggleC.onValueChanged.AddListener(arg0 =>
                 {
                     if (settings.enabled != arg0)
@@ -68,11 +74,63 @@ namespace AdofaiUtils2.Utils
                         }
                     }
                 });
+
+                var content = Object.Instantiate(UIFactory.Panel, tweak.transform);
+                content.AddComponent<LayoutElement>();
+                var layout = content.AddComponent<VerticalLayoutGroup>();
+                layout.padding = new RectOffset(30, 30, 30, 30);
+                if (!settings.enabled)
+                {
+                    content.SetActive(false);
+                }
+
+                tt.text = attr.Name;
+
+                foreach (var field in from field in st.GetFields()
+                    where field.GetCustomAttribute<attribute.Settings.DoNotRender>() == null
+                    select field)
+                {
+                    if (field.FieldType == typeof(string))
+                    {
+                        MelonLogger.Msg($"{field.Name} - STRING");
+                    }
+                    else if (field.FieldType == typeof(bool))
+                    {
+                        var ftoggle = Object.Instantiate(UIFactory.Toggle, content.transform);
+                        ftoggle.AddComponent<LayoutElement>().preferredHeight = 50.0f;
+                        var ftt = ftoggle.transform.GetChild(1).gameObject.GetComponent<Text>();
+                        ftoggle.AddComponent<LayoutElement>().preferredHeight = 50.0f;
+                        var ftoggleC = ftoggle.GetComponent<UnityEngine.UI.Toggle>();
+                        var l = field.GetCustomAttribute<attribute.Settings.Label>();
+                        ftt.text = l != null ? l.text : field.Name;
+                        ftoggleC.isOn = (bool)field.GetValue(settings);
+                        ftoggleC.onValueChanged.AddListener(arg0 =>
+                        {
+                            field.SetValue(settings, t);
+                            t.OnConfigUpdate();
+                        });
+                        var tp = field.GetCustomAttribute<attribute.Settings.PatchTagByConfig>();
+                        if (tp != null)
+                        {
+                            ftoggleC.onValueChanged.AddListener(arg0 =>
+                            {
+                                if (arg0)
+                                {
+                                    AdofaiUtils2.instance.HarmonyInstance.TaggedPatch(tp.tag);
+                                }
+                                else
+                                {
+                                    AdofaiUtils2.instance.HarmonyInstance.TaggedUnPatch(tp.tag);
+                                }
+                            });
+                        }
+                    }
+                }
+
                 if (settings.enabled)
                 {
                     EnableTweak(t, attr.PatchesType);
                 }
-                tt.text = attr.Name;
             }
         }
 
@@ -80,6 +138,8 @@ namespace AdofaiUtils2.Utils
         {
             try
             {
+                var obj = TweakObjects[t];
+                obj.transform.GetChild(1).gameObject.SetActive(false);
                 var subclasses =
                     from type in patchesType.GetTypeInfo().DeclaredNestedTypes
                     where type.GetCustomAttribute<HarmonyPatch>() != null
@@ -92,8 +152,10 @@ namespace AdofaiUtils2.Utils
                     {
                         AdofaiUtils2.instance.HarmonyInstance.Unpatch(orig, methodInfo);
                     }
+
                     MelonLogger.Msg($"Unpatched: {subclass.FullName}");
                 }
+                t.OnDisable();
             }
             catch (Exception e)
             {
@@ -106,15 +168,19 @@ namespace AdofaiUtils2.Utils
         {
             try
             {
+                var obj = TweakObjects[t];
+                obj.transform.GetChild(1).gameObject.SetActive(true);
                 var subclasses =
                     from type in patchesType.GetTypeInfo().DeclaredNestedTypes
-                    where type.GetCustomAttribute<HarmonyPatch>() != null && type.GetCustomAttribute<TaggedPatch>() == null // 태그가 붙어있는 패치는 자동으로 패치하지않게 만들기
+                    where type.GetCustomAttribute<HarmonyPatch>() != null &&
+                          type.GetCustomAttribute<TaggedPatch>() == null // 태그가 붙어있는 패치는 자동으로 패치하지않게 만들기
                     select type;
                 foreach (var subclass in subclasses)
                 {
                     AdofaiUtils2.instance.HarmonyInstance.CreateClassProcessor(subclass).Patch();
                     MelonLogger.Msg($"Patched: {subclass.FullName}");
                 }
+                t.OnEnable();
             }
             catch (Exception e)
             {
@@ -137,10 +203,13 @@ namespace AdofaiUtils2.Utils
                 }
             }
         }
-        
-        private static IEnumerable<Type> GetTweakList(Assembly assembly) {
-            foreach(Type type in assembly.GetTypes()) {
-                if (type.GetCustomAttributes(typeof(AddTweak), true).Length > 0) {
+
+        private static IEnumerable<Type> GetTweakList(Assembly assembly)
+        {
+            foreach (Type type in assembly.GetTypes())
+            {
+                if (type.GetCustomAttributes(typeof(AddTweak), true).Length > 0)
+                {
                     yield return type;
                 }
             }
@@ -165,6 +234,7 @@ namespace AdofaiUtils2.Utils
                     {
                         result = (TweakSettings)Activator.CreateInstance(type);
                     }
+
                     SettingsMap[tweak] = result;
                 }
                 catch (Exception e)

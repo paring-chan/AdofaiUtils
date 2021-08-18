@@ -1,17 +1,12 @@
 using System.Collections.Generic;
-using System.Reflection;
 using AdofaiUtils2.Utils;
 using HarmonyLib;
-using MelonLoader;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace AdofaiUtils2.Settings
 {
     internal class SettingsPatch
     {
-        private static readonly MethodBase UpdateSetting = AccessTools.Method(typeof(SettingsMenu), "UpdateSetting");
-
         [TaggedPatch("Settings")]
         [HarmonyPatch(typeof(SettingsMenu), "GenerateSettings")]
         private static class SettingsMenuGenerateSettings

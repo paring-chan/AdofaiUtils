@@ -15,6 +15,17 @@ namespace AdofaiUtils2.Utils.attribute
             }
         }
         
+        [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
+        public class PatchTagByConfig : Attribute
+        {
+            public string tag;
+            
+            public PatchTagByConfig(string text)
+            {
+                this.tag = text;
+            }
+        }
+        
         [AttributeUsage(AttributeTargets.Field)]
         public class DoNotRender : Attribute
         {}
