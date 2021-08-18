@@ -1,3 +1,4 @@
+using System;
 using AdofaiUtils2.Utils;
 using UnityEngine;
 
@@ -9,11 +10,10 @@ namespace AdofaiUtils2.Settings
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                gameObject.SetActive(false);
+                SettingsUI.Instance.Container.SetActive(false);
+                Utils.Utils.SaveConfig();
+                Utils.Utils.SettingsOpen = false;
                 scrController.instance.paused = false;
-                scrController.instance.audioPaused = false;
-                scrController.instance.enabled = true;
-                Time.timeScale = 1.0f;
             }
         }
     }

@@ -31,6 +31,22 @@ namespace AdofaiUtils2.Settings
         }
 
         [TaggedPatch("Settings")]
+        [HarmonyPatch(typeof(scrController), "ValidInputWasTriggered")]
+        private static class ScrControllerValidInputWasTriggered
+        {
+            private static bool Prefix(ref bool __result)
+            {
+                if (Utils.Utils.SettingsOpen)
+                {
+                    __result = false;
+                    return false;
+                }
+
+                return true;
+            }
+        }
+
+        [TaggedPatch("Settings")]
         [HarmonyPatch(typeof(SettingsMenu), "UpdateSetting")]
         private static class SettingsMenuUpdateSetting
         {
@@ -38,14 +54,32 @@ namespace AdofaiUtils2.Settings
             {
                 if (setting.name == "AdofaiUtils2 Settings Button")
                 {
-                    scrController.instance.pauseMenu.Hide();
+                    scrController.instance.TogglePauseGame();
                     scrController.instance.paused = true;
-                    scrController.instance.audioPaused = true;
-                    scrController.instance.enabled = false;
-                    Time.timeScale = 0.0f;
                     SettingsManager.Instance.UI.Container.SetActive(true);
+                    Utils.Utils.SettingsOpen = true;
                 }
             }
         }
+        // [TaggedPatch("Settings")]
+        // [HarmonyPatch(typeof(Input), "GetKeyDown", typeof(KeyCode))]
+        // private static class InputGetKeyDown
+        // {
+        //     private static bool Prefix(KeyCode key, ref bool __result)
+        //     {
+        //         if (key == KeyCode.Escape && Utils.Utils.SettingsOpen && Input.GetKey(key))
+        //         {
+        //             __result = false;
+        //             
+        //             SettingsUI.Instance.Container.SetActive(false);
+        //             Utils.Utils.SaveConfig();
+        //             Utils.Utils.SettingsOpen = false;
+        //             scrController.instance.paused = false;
+        //             return false;
+        //         }
+        //
+        //         return true;
+        //     }
+        // }
     }
 }

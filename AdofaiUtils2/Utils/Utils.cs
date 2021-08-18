@@ -17,6 +17,8 @@ namespace AdofaiUtils2.Utils
 {
     public static class Utils
     {
+        public static bool SettingsOpen;
+        
         private static readonly string SettingsPath = Path.Combine("Mods", "AdofaiUtils2", "Config");
         
         public static readonly Dictionary<Tweak, TweakSettings> SettingsMap = new Dictionary<Tweak, TweakSettings>();
@@ -106,7 +108,7 @@ namespace AdofaiUtils2.Utils
             {
                 var subclasses =
                     from type in patchesType.GetTypeInfo().DeclaredNestedTypes
-                    where type.GetCustomAttribute<HarmonyPatch>() != null
+                    where type.GetCustomAttribute<HarmonyPatch>() != null && type.GetCustomAttribute<TaggedPatch>() == null // 태그가 붙어있는 패치는 자동으로 패치하지않게 만들기
                     select type;
                 foreach (var subclass in subclasses)
                 {
@@ -118,6 +120,21 @@ namespace AdofaiUtils2.Utils
             {
                 MelonLogger.Error($"Patch Error: {e}");
                 throw;
+            }
+        }
+
+        public static void SaveConfig()
+        {
+            foreach (var tweak in TweakList)
+            {
+                var path = Path.Combine(SettingsPath, $"{tweak.GetType().FullName}.xml");
+                var settings = SettingsMap[tweak];
+                Directory.CreateDirectory(SettingsPath);
+                using (var writer = new StreamWriter(path))
+                {
+                    var serializer = new XmlSerializer(settings.GetType());
+                    serializer.Serialize(writer, settings);
+                }
             }
         }
         
@@ -155,19 +172,6 @@ namespace AdofaiUtils2.Utils
                     MelonLogger.Error($"[{type.FullName}] Settings loading failed: {e}");
                 }
             }
-        }
-        
-        public static IEnumerable<Type> GetEnumerableOfType<T>() where T : class
-        {
-            List<Type> objects = new List<Type>();
-            foreach (Type type in 
-                Assembly.GetAssembly(typeof(T)).GetTypes()
-                    .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(T))))
-            {
-                objects.Add(type);
-            }
-            objects.Sort();
-            return objects;
         }
     }
 }
