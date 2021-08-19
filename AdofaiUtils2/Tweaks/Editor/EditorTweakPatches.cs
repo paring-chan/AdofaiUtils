@@ -1,15 +1,48 @@
+using System.Globalization;
+using AdofaiUtils2.Utils;
 using HarmonyLib;
-using MelonLoader;
+using UnityEngine;
 
 namespace AdofaiUtils2.Tweaks.Editor
 {
     internal static class EditorTweakPatches
     {
-        [HarmonyPatch(typeof(scnCLS), "Update")]
-        private static class CLSUpdate {
+        [HarmonyPatch(typeof(scnEditor), "OnSelectedFloorChange")]
+        [TaggedPatch("Tweaks.Editor.ShowBeats")]
+        private static class ScnEditorOnSelectedFloorChange
+        {
+            private static GameObject _obj;
+
             private static void Postfix()
             {
-                MelonLogger.Msg("와아");
+                var editor = scnEditor.instance;
+
+                Object.DestroyImmediate(_obj);
+                if (editor.selectedFloors.Count < 2) return;
+
+                var first = editor.selectedFloors[0];
+
+                var last = editor.selectedFloors[editor.selectedFloors.Count - 1];
+
+                var firstPos = first.transform.position;
+                var lastPos = last.transform.position;
+
+                GameObject gameObject = Object.Instantiate(editor.prefab_editorNum);
+                _obj = gameObject;
+                gameObject.transform.position = new Vector3(firstPos.x + ((lastPos.x - firstPos.x) / 2),
+                    firstPos.y + ((lastPos.y - firstPos.y) / 2), firstPos.z);
+                double beats = 0;
+
+                for (int i = 0; i < editor.selectedFloors.Count - 1; i++)
+                {
+                    editor.controller.lm.CalculateFloorAngleLengths();
+                    var currentFloor = editor.selectedFloors[i];
+                    var res = (Mathf.Round((float) currentFloor.angleLength * 57.29578f) / 180);
+                    beats += Mathf.Round(res * (first.speed / currentFloor.speed));
+                }
+
+                gameObject.GetComponent<scrLetterPress>().letterText.text =
+                    beats.ToString(CultureInfo.InvariantCulture);
             }
         }
     }

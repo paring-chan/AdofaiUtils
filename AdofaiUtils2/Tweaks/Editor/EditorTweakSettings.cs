@@ -7,6 +7,7 @@ namespace AdofaiUtils2.Tweaks.Editor
     public class EditorTweakSettings : TweakSettings
     {
         [Utils.attribute.Settings.Label("선택 범위의 비트수 보기")]
+        [Utils.attribute.Settings.PatchTagByConfig("Tweaks.Editor.ShowBeats")]
         public bool showSelectionBeats;
     }
 }

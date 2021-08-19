@@ -123,6 +123,7 @@ namespace AdofaiUtils2.Utils
                                     AdofaiUtils2.instance.HarmonyInstance.TaggedUnPatch(tp.tag);
                                 }
                             });
+                            AdofaiUtils2.instance.HarmonyInstance.TaggedPatch(tp.tag);
                         }
                     }
                 }
@@ -155,6 +156,7 @@ namespace AdofaiUtils2.Utils
 
                     MelonLogger.Msg($"Unpatched: {subclass.FullName}");
                 }
+
                 t.OnDisable();
             }
             catch (Exception e)
@@ -180,6 +182,7 @@ namespace AdofaiUtils2.Utils
                     AdofaiUtils2.instance.HarmonyInstance.CreateClassProcessor(subclass).Patch();
                     MelonLogger.Msg($"Patched: {subclass.FullName}");
                 }
+
                 t.OnEnable();
             }
             catch (Exception e)
