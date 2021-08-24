@@ -55,7 +55,7 @@ namespace AdofaiUtils2.Misc
         {
             SettingsManager.Unregister(Settings);
             Harmony.UnpatchConditionalAll(Assembly.GetExecutingAssembly());
-            Harmony.UnpatchAll();
+            Harmony.UnpatchAll(modEntry.Info.Id);
         }
     }
 }
