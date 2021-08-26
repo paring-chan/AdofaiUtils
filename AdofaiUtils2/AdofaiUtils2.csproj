@@ -387,6 +387,9 @@
         <Compile Include="Tweaks\Editor\EditorTweak.cs" />
         <Compile Include="Tweaks\Editor\EditorTweakPatches.cs" />
         <Compile Include="Tweaks\Editor\EditorTweakSettings.cs" />
+        <Compile Include="Tweaks\Play\PlayTweak.cs" />
+        <Compile Include="Tweaks\Play\PlayTweakPatches.cs" />
+        <Compile Include="Tweaks\Play\PlayTweakSettings.cs" />
         <Compile Include="UI\UIFactory.cs" />
         <Compile Include="UI\UIManager.cs" />
         <Compile Include="Utils\AdofaiUtils2Base.cs" />

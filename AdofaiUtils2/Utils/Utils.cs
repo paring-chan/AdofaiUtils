@@ -106,7 +106,7 @@ namespace AdofaiUtils2.Utils
                         ftoggleC.isOn = (bool)field.GetValue(settings);
                         ftoggleC.onValueChanged.AddListener(arg0 =>
                         {
-                            field.SetValue(settings, t);
+                            field.SetValue(settings, arg0);
                             t.OnConfigUpdate();
                         });
                         var tp = field.GetCustomAttribute<attribute.Settings.PatchTagByConfig>();
