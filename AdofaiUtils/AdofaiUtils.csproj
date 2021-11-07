@@ -387,6 +387,6 @@
     </Target>
     -->
     <Target Name="AfterBuild">
-        <Exec Command="cd .. &amp;&amp; debug 3.0.0"/>
+        <Exec Command="cd .. &amp;&amp; debug"/>
     </Target>
 </Project>

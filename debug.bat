@@ -1,23 +1,8 @@
 ﻿
-mkdir tmp
 
-cd tmp
+copy "C:\Program Files (x86)\Steam\steamapps\common\A Dance of Fire and Ice\Mods\AdofaiUtils.dll" AdofaiUtils\bin\Debug\AdofaiUtils.dll
 
-mkdir AdofaiUtils
-
-cd AdofaiUtils
-
-mkdir lib
-
-cd ..
-
-copy ..\AdofaiUtils\bin\Debug\AdofaiUtils.dll AdofaiUtils\AdofaiUtils.dll
-
-tar -a -c -f "C:\Program Files (x86)\Steam\steamapps\common\A Dance of Fire and Ice\Mods\AdofaiUtils.zip" AdofaiUtils
-
-cd ..
-
-rmdir /s /q tmp
+taskkill /im "A Dance of *"
 
 explorer steam://rungameid/977950
 
