@@ -6,7 +6,7 @@ namespace AdofaiUtils
     {
         public override void OnApplicationStart()
         {
-            MelonLogger.Msg("Start");
+            Assets.Setup();
         }
     }
 }
