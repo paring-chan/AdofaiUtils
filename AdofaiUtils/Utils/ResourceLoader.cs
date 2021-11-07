@@ -2,7 +2,7 @@
 
 namespace AdofaiUtils.Utils
 {
-    public static class ResourceLoader
+    internal static class ResourceLoader
     {
         public static byte[] ReadFully(Stream input)
         {
