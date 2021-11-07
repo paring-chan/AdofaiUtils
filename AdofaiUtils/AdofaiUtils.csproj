@@ -381,10 +381,12 @@
         <Compile Include="Assets.cs" />
         <Compile Include="Attribute\Config.cs" />
         <Compile Include="Attribute\TaggedPatch.cs" />
-        <Compile Include="Config\Test.cs" />
+        <Compile Include="Config\ConfigObject.cs" />
+        <Compile Include="Config\Play.cs" />
         <Compile Include="Core\SettingsPatch.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Utils\ConfigItem.cs" />
+        <Compile Include="Utils\ConfigLoader.cs" />
         <Compile Include="Utils\ReflectUtils.cs" />
         <Compile Include="Utils\ResourceLoader.cs" />
         <Compile Include="Utils\SpriteUtilities.cs" />
