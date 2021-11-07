@@ -1,3 +1,10 @@
 # AdofaiUtils2
 
-A mod that provides some utils for A Dance of Fire and Ice.
+Some Utilities for A Dance of Fire and Ice
+
+## Development
+
+`lib/ref`
+- MelonLoader.dll
+
+`lib/Managed` - ADOFAI Managed folder

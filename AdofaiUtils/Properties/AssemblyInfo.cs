@@ -1,15 +1,16 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using MelonLoader;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AdofaiUtils2")]
+[assembly: AssemblyTitle("AdofaiUtils")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AdofaiUtils2")]
+[assembly: AssemblyProduct("AdofaiUtils")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +21,7 @@ using MelonLoader;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("AF05579C-2827-4FBA-95E2-BE85A5235875")]
+[assembly: Guid("5CCAD8DE-33CF-408B-B550-3462781597A1")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,10 +32,10 @@ using MelonLoader;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.0.*")]
-// [assembly: AssemblyVersion("1.0.0.0")]
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-[assembly:MelonInfo(typeof(AdofaiUtils2.AdofaiUtils2), "AdofaiUtils2", "0.1.0", "pikokr")]
 [assembly:MelonGame("7th Beat Games", "A Dance of Fire and Ice")]
-[assembly:HarmonyDontPatchAll]
+[assembly:MelonInfo(typeof(AdofaiUtils.AdofaiUtils), "AdofaiUtils", "0.0.1", "파링파링")]
+[assembly:MelonColor(ConsoleColor.Blue)]
