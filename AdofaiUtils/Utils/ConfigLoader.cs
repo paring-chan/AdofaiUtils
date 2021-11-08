@@ -18,7 +18,7 @@ namespace AdofaiUtils.Utils
                 return;
             }
             
-            Config = JsonUtility.FromJson<ConfigObject>(FilePath);
+            Config = JsonUtility.FromJson<ConfigObject>(File.ReadAllText(FilePath));
         }
 
         public static void Save()

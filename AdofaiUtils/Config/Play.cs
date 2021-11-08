@@ -6,18 +6,9 @@ namespace AdofaiUtils.Config
     [Config]
     internal class HideSpeedTrialText : BooleanConfigItem
     {
-        public override void Init(PauseSettingButton btn)
+        public static void Update()
         {
-            val = ConfigLoader.Config.hideSpeedTrialText;
-            btn.hasDescription = true;
-            btn.label.text = "1.0배속 텍스트 숨기기";
-            base.Init(btn);
-            Update();
-        }
-
-        private void Update()
-        {
-            if (val)
+            if (ConfigLoader.Config.hideSpeedTrialText)
             {
                 AdofaiUtils.Instance.HarmonyInstance.TaggedPatch("HideSpeedTrialText");
             }
@@ -25,6 +16,14 @@ namespace AdofaiUtils.Config
             {
                 AdofaiUtils.Instance.HarmonyInstance.TaggedUnPatch("HideSpeedTrialText");
             }
+        }
+        
+        public override void Init(PauseSettingButton btn)
+        {
+            val = ConfigLoader.Config.hideSpeedTrialText;
+            btn.hasDescription = true;
+            btn.label.text = "1.0배속 텍스트 숨기기";
+            base.Init(btn);
         }
 
         protected override void OnChange(bool value, PauseSettingButton setting, SettingsMenu.Interaction action)

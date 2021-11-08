@@ -37,6 +37,6 @@ using MelonLoader;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly:MelonGame("7th Beat Games", "A Dance of Fire and Ice")]
-[assembly:MelonInfo(typeof(AdofaiUtils.AdofaiUtils), "AdofaiUtils", "3.0.0", "파링파링")]
+[assembly:MelonInfo(typeof(AdofaiUtils.AdofaiUtils), "AdofaiUtils", "3.0.0", "파링파링>_<")]
 [assembly:MelonColor(ConsoleColor.Blue)]
 [assembly:HarmonyDontPatchAll]

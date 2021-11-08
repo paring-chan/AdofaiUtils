@@ -23,6 +23,7 @@ namespace AdofaiUtils
             ConfigLoader.Load();
             Assets.Setup();
             HarmonyInstance.TaggedPatch("Core");
+            TweakPreload.Init();
         }
 
         public override void OnApplicationQuit()
