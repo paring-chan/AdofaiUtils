@@ -7,6 +7,7 @@ namespace AdofaiUtils.Utils
         public static void Init()
         {
             HideSpeedTrialText.Update();
+            CLSGotoEditor.Update();
         }
     }
 }

@@ -6,5 +6,7 @@ namespace AdofaiUtils.Config
     public class ConfigObject
     {
         public bool hideSpeedTrialText;
+
+        public bool clsGotoEditor;
     }
 }
